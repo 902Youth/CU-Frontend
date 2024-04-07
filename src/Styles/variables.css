@@ -1,0 +1,26 @@
+/* HOW TO USE: */
+/* @import 'variables.css */
+/* Example: */
+/* background-color: var(--primary-blue); */
+
+:root {
+  --primary-blue: #587792;
+  --primary-green: #C7D3BF;
+  --primary-gray: #D3D3D3;
+  --primary-black: #000807;
+  --badge-orange: #F1B46A;
+  --padding-sm: 2%;
+  --padding-md: 4%;
+  --padding-lg: 6%;
+  --margin-sm: 2%;
+  --margin-md: 4%;
+  --margin-lg: 6%;
+  --border-primary-black: 2px solid #000807;
+  --border-primary-green: 2px solid #C7D3BF;
+  --border-primary-gray: 2px solid #D3D3D3;
+  --border-primary-blue: 2px solid #587792;
+  --br-sm: 5px;
+  --br-md: 10px;
+  --br-lg: 25px;
+  --font: sans-serif;
+}
