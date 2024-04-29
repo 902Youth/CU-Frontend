@@ -1,14 +1,18 @@
 import React from "react";
 
-import NavBar from './components/NavBar';
+import NavBar from "./components/NavBar/NavBar";
+
+import "./styles/App.css";
 
 const App: React.FC = () => {
   return (
-    <>
-      <NavBar/>
-      <h1>Welcome to Creative Unison!</h1>
-    </>
-  )
-}
+    <div className="container-main">
+      <NavBar />
+      <div className="container-page">
+        <h1>Creative Unison</h1>
+      </div>
+    </div>
+  );
+};
 
 export default App;
