@@ -27,7 +27,7 @@ export const registerUser = createAsyncThunk(
       const response = await axios.post('----------i dont have the endpoint---------', { email, password });
       return response.data;  
     } catch (error) {
-      return rejectWithValue(error.response?.data?.error || 'Registration failed');
+      return rejectWithValue(error || 'Registration failed');
     }
   }
 );
@@ -44,7 +44,7 @@ export const loginUser = createAsyncThunk(
       const response = await axios.post('----------i dont have the endpoint---------', { email, password });
       return response.data;  
     } catch (error) {
-      return rejectWithValue(error.response?.data?.error || 'Login failed');
+      return rejectWithValue(error || 'Login failed');
     }
   }
 );
