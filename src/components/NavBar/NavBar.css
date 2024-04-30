@@ -1,0 +1,17 @@
+@import "../../styles/variables.css";
+
+.container-nav-bar {
+  width: 80px;
+  background-color: var(--primary-gray);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-nav-logo {
+    height: 80px;
+    width: 100%;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
