@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 interface UserState {
   isLoggedIn: boolean;
-  isRegistering: boolean;  
+  isRegistering: boolean;
   email?: string;
   token?: string;
-  error?: string;          
-  registrationError?: string;  
+  error?: string;
+  registrationError?: string;
 }
 
 const initialState: UserState = {
@@ -19,38 +19,46 @@ const initialState: UserState = {
   registrationError: undefined,
 };
 
-
 export const registerUser = createAsyncThunk(
-  'user/registerUser',
-  async ({ email, password }: { email: string, password: string }, { rejectWithValue }) => {
+  "user/registerUser",
+  async (
+    { email, password }: { email: string; password: string },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await axios.post('----------i dont have the endpoint---------', { email, password });
-      return response.data;  
+      const response = await axios.post(
+        "----------i dont have the endpoint---------",
+        { email, password }
+      );
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error || 'Registration failed');
+      return rejectWithValue(error || "Registration failed");
     }
   }
 );
 
-
-
 //*Async thunk for loginuser
 
-
 export const loginUser = createAsyncThunk(
-  'user/loginUser',
-  async ({ email, password }: { email: string, password: string }, { rejectWithValue }) => {
+  "user/loginUser",
+  async (
+    { email, password }: { email: string; password: string },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await axios.post('----------i dont have the endpoint---------', { email, password });
-      return response.data;  
+      const response = await axios.post(
+        "----------i dont have the endpoint---------",
+        { email, password }
+      );
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error || 'Login failed');
+      return rejectWithValue(error || "Login failed");
     }
   }
 );
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     logout(state) {
@@ -70,7 +78,7 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isRegistering = false;
-        state.isLoggedIn = true; 
+        state.isLoggedIn = true;
         state.email = action.payload.email;
         state.token = action.payload.token;
         state.registrationError = undefined;
@@ -80,7 +88,7 @@ const userSlice = createSlice({
         state.registrationError = action.payload as string;
       })
       .addCase(loginUser.pending, (state) => {
-        state.error = undefined; 
+        state.error = undefined;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoggedIn = true;
@@ -91,7 +99,7 @@ const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload as string;
       });
-  }
+  },
 });
 
 export const { logout } = userSlice.actions;
