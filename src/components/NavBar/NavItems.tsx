@@ -25,8 +25,8 @@ export default function NavItems(): JSX.Element {
       icon: <Bell size={28} />,
     },
     {
-      name: "Likes",
-      path: "/likes",
+      name: "Endorsements",
+      path: "/endorsements",
       icon: <ThumbsUp size={28} />,
     },
     {

@@ -7,7 +7,7 @@ export default function NavItem({ path, icon, active }) {
   return (
     <li className="nav-item">
       <Link className={`nav-item-link ${activeClass}`} to={path}>
-          {icon}
+        {icon}
       </Link>
     </li>
   );
