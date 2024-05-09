@@ -1,4 +1,4 @@
-@import "../../Styles/variables.css";
+@import "../../styles/variables.css";
 
 .container-nav-bar {
   width: 80px;
@@ -9,9 +9,9 @@
 }
 
 .container-nav-logo {
-    height: 80px;
-    width: 100%;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
+  height: 80px;
+  width: 100%;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
 }

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { AppState } from "../../redux/Store";
+
 import NavItems from "./NavItems";
 import Logo from "./Logo";
 

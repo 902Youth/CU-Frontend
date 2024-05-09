@@ -1,9 +1,9 @@
 .container-main {
-    display: flex;
-    flex: row;
-    min-height: 100vh;
+  display: flex;
+  flex: row;
+  min-height: 100vh;
 }
 
 .container-page {
-    flex-grow: 1;
+  flex-grow: 1;
 }
