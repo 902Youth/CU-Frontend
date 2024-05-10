@@ -1,5 +1,4 @@
-import React from 'react';
-import './footer.css';
+import './Footer.css';
 
 const Footer=()=>{
     return (
@@ -27,11 +26,11 @@ const Footer=()=>{
                 <div className="sb__footer-links_div">
                     <h4>Coming soon on</h4>
                     <div className="socialmedia">                     
-                        <a href="https://twitter.com/902youth?lang=en">
-                            <ion-icon name="logo-twitter"></ion-icon>
+                        <a href="https://twitter.com/902youth?lang=en">Twitter
+                            {/* <ion-icon name="logo-twitter"></ion-icon> */}
                         </a>
-                        <a href="https://www.instagram.com/902youth/?hl=en">
-                            <ion-icon name="logo-instagram"></ion-icon>
+                        <a href="https://www.instagram.com/902youth/?hl=en">Instagram
+                            {/* <ion-icon name="logo-instagram"></ion-icon> */}
                         </a>
                     </div>
                 </div>

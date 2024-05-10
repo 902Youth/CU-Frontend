@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 
 import "./styles/App.css";
 
@@ -9,7 +10,7 @@ const App: React.FC = () => {
   return (
     <>
       <div className="container-main">
-        <NavBar />
+        <NavBar className="nav-bar"/>
         <div className="container-page">
           <Routes>
             {/* All of these routes are just place holders */}

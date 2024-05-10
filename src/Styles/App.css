@@ -1,9 +1,15 @@
 .container-main {
-  display: flex;
-  flex: row;
   min-height: 100vh;
+  display: grid;
+  grid-template-areas: 
+  "navbar mainpage";
+  grid-template-columns: 80px 1fr;
+}
+
+.nav-bar {
+  grid-area: navbar;
 }
 
 .container-page {
-  flex-grow: 1;
+  grid-area: mainpage;
 }
