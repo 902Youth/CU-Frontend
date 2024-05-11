@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 import "./NavBar.css";
 
-export default function NavBar(): JSX.Element {
+const NavBar: React.FC<{className: string}> = () => {
   const isLoggedIn: boolean = useSelector(
     (state: AppState) => state.user.isLoggedIn
   );
@@ -18,3 +18,5 @@ export default function NavBar(): JSX.Element {
     </div>
   );
 }
+
+export default NavBar
