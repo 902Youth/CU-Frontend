@@ -1,3 +1,6 @@
+@import "./variables.css";
+
+
 .container-main {
   min-height: 100vh;
   display: grid;
