@@ -1,0 +1,13 @@
+.endorser-profile-pic {
+  width: 70px;
+  height: 70px;
+  background-color: gray;
+  border-radius: 40px;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+}
