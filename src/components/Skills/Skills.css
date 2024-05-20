@@ -12,4 +12,10 @@
     color: white;
     background-color: #587792;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    max-height: 20px;
+}
+
+.skill:hover {
+    background-color: #59889c;
+    cursor: pointer;
 }
