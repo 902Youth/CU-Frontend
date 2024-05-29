@@ -1,3 +1,4 @@
+import React from 'react'
 import './ProfileQuickView.css'
 
 export default function ProfileQuickView(): JSX.Element {
