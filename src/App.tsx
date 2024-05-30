@@ -15,6 +15,8 @@ const App: React.FC = () => {
         <div className="container-page">
           <Routes>
             {/* All of these routes are just place holders */}
+
+            {/* for sign in */}
             <Route index element={<h1>Home</h1>}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/profile" element={<h1>Profile</h1>}></Route>

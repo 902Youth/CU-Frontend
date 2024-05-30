@@ -1,10 +1,15 @@
 import React from "react";
-import ProfileQuickView from "../ProfileQuickView/ProfileQuickView";
+import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
+import "./Home.css";
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <ProfileQuickView />
+    <div className="homeContainer">
+      <div className="feed"> test</div>
+
+      <div className="quickView">
+        <ProfileQuickView />
+      </div>
     </div>
   );
 };

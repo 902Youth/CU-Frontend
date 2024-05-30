@@ -1,5 +1,7 @@
 import SkillsProps from "./types"
-import './skills.css'
+import './Skills.css'
+
+
 
 const Skills: React.FC<SkillsProps> = ( props ) => {
   const { skills } = props;

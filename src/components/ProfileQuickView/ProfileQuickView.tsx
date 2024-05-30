@@ -1,7 +1,10 @@
 import React from 'react'
 import './ProfileQuickView.css'
+import Skills from '../Skills/Skills';
 
-export default function ProfileQuickView(): JSX.Element {
+export const ProfileQuickView: React.FC = () => {
+
+    const tempSkills = ['JavaScript', 'TypeScript', 'HTML', 'CSS', 'AWS']
     return (
         <div className="container-quickview">
             <div className="container-profile">
@@ -18,12 +21,16 @@ export default function ProfileQuickView(): JSX.Element {
                 </div>
             </div>
 
+            <div className="divider"></div>
+
             <div className="container-skills">
-                <h1>Skills Section</h1>
+                <Skills skills={tempSkills} />
             </div>
 
+            <div className="divider"></div>
+
             <div className="container-bio">
-                <h3>A budding HR specialist looking for a small to meduim sized company!</h3>
+                <h3 style={{fontSize: '15px'}}>A budding HR specialist looking for a small to medium sized company!</h3>
             </div>
         </div>
     );
