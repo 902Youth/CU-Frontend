@@ -2,28 +2,29 @@ import React from 'react';
 import './Endorsement.css';
 import ProfilePicture from '../ProfilePicture/ProfilePicture';
 import { DotsThree, HeartStraight, Chat } from "@phosphor-icons/react";
+import { useSelector } from 'react-redux';
+import { AppState } from '../../redux/Store';
 
 const Endorsement = () => {
-  const endorsements = [
-    { name: "Nicole Dakota", postedDate: "2 hrs ago", messageContent: "Body text for a post. Since it's a social app, sometimes it's a hot take, and sometimes it's a question.", likes: 6, comments: 2 },
-    { name: "David Kline", postedDate: "2 hrs ago", messageContent: "Body text for a post. Since it's a social app, sometimes it's a hot take, and sometimes it's a question.", likes: 12, comments: 3 },
-  ];
+  const endorsements = useSelector((state: AppState) => state.endorsements.endorsements);
+  const selectedSkill = useSelector((state: AppState) => state.skills.selectedSkill);
+
+  const filteredEndorsements = selectedSkill
+    ? endorsements.filter(endorsement => endorsement.skill.includes(selectedSkill))
+    : endorsements;
 
   return (
     <div className='endorsement-container'>
-      {endorsements.map((endorsement, index) => (
+      {filteredEndorsements.map((endorsement) => (
         <div className='endorsement'>
           <div className='endorser'>
-            <ProfilePicture name={endorsement.name}/>
-            <div className='endorser-top'>
-              <div className='endorser-info'>
-                <div className='endorser-details'>
-                  <p className='endorser-name clickable'>{endorsement.name}</p>
-                  <p className='posted-date'>{endorsement.postedDate}</p>
-                </div>
-                <div className='message-details'>
-                  <p>Posted by {endorsement.name}</p>
-                </div>
+            <ProfilePicture name={endorsement.endorsedBy}/>
+            <div className='endorser-info'>
+              <div className='endorser-details'>
+                <p className='endorser-name clickable'>
+                  {endorsement.endorsedBy} endorsed You
+                </p>
+                <p className='posted-date'>2 hrs ago</p>
               </div>
               <div className='endorsement-options'>
                 <DotsThree size={32} />
@@ -31,18 +32,21 @@ const Endorsement = () => {
             </div>
           </div>
           <div className='message'>
+            <div className='message-details'>
+              <p>Posted by <span className='endorser-username'>@{endorsement.endorsedBy}</span></p>
+            </div>
             <div className='message-content'>
-              <p>{endorsement.messageContent}</p>
+              <p>{endorsement.comment}</p>
             </div>
           </div>
           <div className='stats'>
             <div className='endorsement-stat'>
                 <HeartStraight size={18} className='icon'/>
-                <p>{endorsement.likes} likes</p>
+                <p>6 likes</p>
             </div>
             <div className='endorsement-stat'>
               <Chat size={18} className='icon'/>
-              <p>{endorsement.comments} comments</p>
+              <p>2 comments</p>
             </div>
           </div>
         </div>
