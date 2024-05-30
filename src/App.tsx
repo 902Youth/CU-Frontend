@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home/Home"
 
 import NavBar from "./components/NavBar/NavBar";
 // import Footer from "./components/Footer/Footer";
@@ -14,8 +15,10 @@ const App: React.FC = () => {
         <div className="container-page">
           <Routes>
             {/* All of these routes are just place holders */}
+
+            {/* for sign in */}
             <Route index element={<h1>Home</h1>}></Route>
-            <Route path="/home" element={<h1>Home</h1>}></Route>
+            <Route path="/home" element={<Home />}></Route>
             <Route path="/profile" element={<h1>Profile</h1>}></Route>
             <Route path="/endorsements" element={<h1>Endorsements</h1>}></Route>
             <Route

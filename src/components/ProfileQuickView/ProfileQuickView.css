@@ -5,30 +5,40 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 35rem;
+    width: auto;
+    margin: 5%;
+    border: 2px solid var(--primary-gray);
 }
 
 .container-profile {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--primary-gray);
-    height: 55vh;
-    width: 30vw;
+   
+    height: 40rem;
+    width: 100%;
+}
+
+.divider {
+    background-color: var(--primary-gray);
+    height: 6px;
+    width: 85%;
 }
 
 .background-pic {
     background-color: var(--primary-gray);
-    height: 50%;
+    height: 80%;
     width: 100%;
 }
 
 .pfp {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     background-color: black;
     position: relative;
     z-index: 10;
-    top: -50px;
+    top: -30px;
     margin: 5px;
 }
 
@@ -49,15 +59,15 @@
 }
 
 .container-skills {
-    border: 2px solid var(--primary-gray);
-    height: 30vh;
-    width: 30vw;
+    /* border: 2px solid var(--primary-gray); */
+    height: 20rem;
+    width: 100%;
     text-align: center;
 }
 
 .container-bio {
-    border: 2px solid var(--primary-gray);
-    height: 15vh;
-    width: 30vw;
+    /* border: 2px solid var(--primary-gray); */
+    height: 10rem;
+    width: 100%;
     text-align: center;
 }

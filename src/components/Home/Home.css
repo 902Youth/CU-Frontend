@@ -1,0 +1,19 @@
+.homeContainer {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+
+  height: 100vh;
+}
+
+.feed {
+  grid-column: 1/2;
+
+}
+
+.quickView {
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+}

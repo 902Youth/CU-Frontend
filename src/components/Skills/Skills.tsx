@@ -1,5 +1,6 @@
 import SkillsProps from "./types"
 import './Skills.css'
+
 import { useDispatch } from 'react-redux';
 import { selectSkill } from '../../redux/skills/skillsSlice';
 
