@@ -5,7 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 35rem;
+  height: 75vh;
+  /* min-height: 55vh;
+  max-height: 85vh; */
   width: auto;
   margin: 5%;
   border-radius: 10px;
@@ -16,7 +18,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 30rem;
+  height: 20rem;
   width: 100%;
 }
 
@@ -26,23 +28,53 @@
   width: 85%;
 }
 
-.background-pic {
+.default-background-pic {
   background-color: var(--primary-gray);
-  height: 8rem;
+  height: 10rem;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+}
+.user-bg-pic {
+  height: 10rem;
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.pfp {
+.default-pfp {
   height: 70px;
   width: 70px;
   border-radius: 50%;
   background-color: black;
   position: relative;
   z-index: 10;
-  top: -40px;
+  top: -50px;
   margin: 5px;
+}
+
+.user-pfp {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  top: 70%;
+  margin: 5px;
+  overflow: hidden; 
+}
+
+.user-pfp img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image covers the container */
+  object-position: center; /* Centers the image */
+}
+
+.edit-profile {
+   text-align: right;
+   padding: 2%;
 }
 
 .profile-info {
@@ -50,6 +82,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 4rem;
+  margin-top: 8%;
 }
 
 .profile-info p {
@@ -74,4 +108,5 @@
   height: 10rem;
   width: 100%;
   text-align: center;
+  padding: 2%;
 }
