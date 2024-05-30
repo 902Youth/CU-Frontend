@@ -2,17 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 22px;
+    /* gap: 22px; */
 }
 
 .skill {
-    padding: 10px 30px;
+    padding: 10px 20px;
     list-style-type: none;
     border-radius: 20px;
     color: white;
     background-color: #587792;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     max-height: 20px;
+    margin: 1%;
 }
 
 .skill:hover {

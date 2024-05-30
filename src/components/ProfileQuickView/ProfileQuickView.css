@@ -1,73 +1,112 @@
 @import "../../styles/variables.css";
 
 .container-quickview {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 35rem;
-    width: auto;
-    margin: 5%;
-    border: 2px solid var(--primary-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  /* min-height: 55vh;
+  max-height: 85vh; */
+  width: auto;
+  margin: 5%;
+  border-radius: 10px;
+  box-shadow: 0px 3px 13px 6px rgb(198, 198, 198);
 }
 
 .container-profile {
-    display: flex;
-    flex-direction: column;
-   
-    height: 40rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 20rem;
+  width: 100%;
 }
 
 .divider {
-    background-color: var(--primary-gray);
-    height: 6px;
-    width: 85%;
+  background-color: var(--primary-gray);
+  height: 6px;
+  width: 85%;
 }
 
-.background-pic {
-    background-color: var(--primary-gray);
-    height: 80%;
-    width: 100%;
+.default-background-pic {
+  background-color: var(--primary-gray);
+  height: 10rem;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+}
+.user-bg-pic {
+  height: 10rem;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.pfp {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    background-color: black;
-    position: relative;
-    z-index: 10;
-    top: -30px;
-    margin: 5px;
+.default-pfp {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+  z-index: 10;
+  top: -50px;
+  margin: 5px;
+}
+
+.user-pfp {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  top: 70%;
+  margin: 5px;
+  overflow: hidden; 
+}
+
+.user-pfp img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image covers the container */
+  object-position: center; /* Centers the image */
+}
+
+.edit-profile {
+   text-align: right;
+   padding: 2%;
 }
 
 .profile-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  margin-top: 8%;
 }
 
 .profile-info p {
-    margin: 0;
+  margin: 0;
 }
 
 .profile-endorsements {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .container-skills {
-    /* border: 2px solid var(--primary-gray); */
-    height: 20rem;
-    width: 100%;
-    text-align: center;
+  /* border: 2px solid var(--primary-gray); */
+  height: 20rem;
+  width: 100%;
+  text-align: center;
+  margin-right: 2rem;
 }
 
 .container-bio {
-    /* border: 2px solid var(--primary-gray); */
-    height: 10rem;
-    width: 100%;
-    text-align: center;
+  /* border: 2px solid var(--primary-gray); */
+  height: 10rem;
+  width: 100%;
+  text-align: center;
+  padding: 2%;
 }

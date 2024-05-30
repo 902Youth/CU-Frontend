@@ -1,6 +1,6 @@
 .homeContainer {
   display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
+  grid-template-columns: 65% 35%;
 
   height: 100vh;
 }
