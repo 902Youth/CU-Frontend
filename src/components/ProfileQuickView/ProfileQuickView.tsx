@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Skills from "../Skills/Skills";
 import { NotePencil } from "@phosphor-icons/react";
+import { useNavigate } from "react-router";
 import "./ProfileQuickView.css";
+import Icons, { IconTypes } from "../../Icons/icons";
 
 interface ProfileProps {
   name: string;
   userName: string;
   position: string;
+  department: string;
   badge: string;
-  endorsements: number;
+  endorsements: number | null;
   skills: string[];
   bio: string;
   pfp: string;
@@ -21,12 +24,27 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
   position,
   endorsements,
   bio,
+  department,
   badge,
   skills,
   pfp,
   bgPic,
 }) => {
   const tempSkills = ["JavaScript", "TypeScript", "HTML", "CSS", "AWS"];
+  const navigate = useNavigate();
+  const [badgeKey, setBadgeKey] = useState<IconTypes | null>(null);
+
+  useEffect(() => {
+    const iconKey = Object.keys(Icons).find(
+      (keyName) => keyName.toLowerCase() === department.toLowerCase()
+    );
+    setBadgeKey(iconKey as IconTypes);
+  }, [department]);
+
+  const handleNav = (whereTo: string) => {
+    navigate(`/${whereTo}`);
+  };
+
   return (
     <div className="container-quickview">
       <div className="container-profile">
@@ -65,7 +83,7 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
         )}
 
         <div className="edit-profile">
-          <NotePencil size={25} />
+          <NotePencil size={25} onClick={() => handleNav("account")} />
         </div>
 
         <div className="profile-info">
@@ -74,8 +92,17 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
           <p>{position}</p>
         </div>
         <div className="profile-endorsements">
-          <p>Badge</p>
-          <p>{endorsements} Endorsements</p>
+          {badgeKey && (
+            <img
+              src={Icons[badgeKey]}
+              alt="Badge"
+              style={{ height: "60px", width: "60px", marginBottom: "2%" }}
+            />
+          )}
+
+          <p onClick={() => handleNav("account/endorsements")}>
+            {endorsements} Endorsements
+          </p>
         </div>
       </div>
 

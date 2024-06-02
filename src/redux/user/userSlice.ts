@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, AsyncThunk, AsyncThunkAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface UserState {
@@ -8,6 +8,18 @@ interface UserState {
   token?: string;
   error?: string;
   registrationError?: string;
+  userAccountDetails: {
+    name: string | undefined;
+    userName: string | undefined;
+    position: string | undefined;
+    department: string | undefined;
+    badge: string | undefined;
+    endorsements: number | null;
+    skills: string[] | undefined;
+    bio: string | undefined;
+    pfp: string | undefined;
+    bgPic: string | undefined;
+  }
 }
 
 const initialState: UserState = {
@@ -17,9 +29,21 @@ const initialState: UserState = {
   token: undefined,
   error: undefined,
   registrationError: undefined,
+  userAccountDetails: {
+    name: undefined,
+    userName: undefined,
+    position: undefined,
+    department: undefined,
+    badge: undefined,
+    endorsements: null,
+    skills: undefined,
+    bio: undefined,
+    pfp: undefined,
+    bgPic: undefined,
+  }
 };
 
-export const registerUser = createAsyncThunk(
+const registerUser = createAsyncThunk<any, { email: string; password: string }>(
   "user/registerUser",
   async (
     { email, password }: { email: string; password: string },
@@ -37,9 +61,7 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-//*Async thunk for loginuser
-
-export const loginUser = createAsyncThunk(
+const loginUser = createAsyncThunk<any, { email: string; password: string }>(
   "user/loginUser",
   async (
     { email, password }: { email: string; password: string },
@@ -56,6 +78,7 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
 
 const userSlice = createSlice({
   name: "user",
