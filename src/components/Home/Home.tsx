@@ -2,13 +2,16 @@ import React from "react";
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import "./Home.css";
 import { bgUri, pfpUri } from "./mockData";
+import EndorsementFeed from "../Endorsement/EndorsementFeed";
 
 const Home: React.FC = () => {
   return (
-    <div className="homeContainer">
-      <div className="feed"> test</div>
+    <div className="home-container">
+      <div className="endorsement-feed-wrapper">
+        <EndorsementFeed />
+      </div>
 
-      <div className="quickView">
+      <div className="quick-view-wrapper">
         <ProfileQuickView
           name="Chris Hemsworth"
           position="HR Specialist"

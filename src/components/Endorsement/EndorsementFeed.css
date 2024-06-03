@@ -1,11 +1,9 @@
-.endorsement-container {
-  width: 700px;
+.endorsement-feed {
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  margin-left: 60px;
 }
 
 .endorsement {
@@ -48,17 +46,17 @@
 
 .message {
   padding-left: 70px;
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 
 .message-details {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 
 .endorser-username {
-  color: #648C70;
+  color: #648c70;
 }
 
 .endorsement-options {
@@ -79,13 +77,15 @@
   flex-direction: row;
   align-items: center;
   margin-right: 10px;
+  font-size: 14px;
 }
 
 .icon {
   margin-right: 5px;
 }
 
-body, * {
+body,
+* {
   margin: 0;
   padding: 0;
 }

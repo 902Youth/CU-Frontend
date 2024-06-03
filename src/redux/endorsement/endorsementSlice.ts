@@ -1,13 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 interface Endorsement {
-  id: number;
-  userId: number;
-  endorsedBy: string;
-  skill: string;
-  comment?: string;
+  id: string;
+  recipient: User;
+  endorser: User;
+  timestamp: string;
+  message: string;
+  skill?: string;
+  likes: number;
+  comments?: number;
+}
+
+interface User {
+  name: string;
+  username: string;
+  profilePictureUrl: string;
+  profileUrl: string;
 }
 
 //* State interface
@@ -20,9 +29,226 @@ interface EndorsementState {
 //* Initial state
 const initialState: EndorsementState = {
   endorsements: [
-    { id: 1, userId: 1, endorsedBy: "Nicole Dakota", skill: "Typescript", comment: "Carson knows Typescript very well! 10/10 would recommend." },
-    { id: 2, userId: 2, endorsedBy: "David Kline", skill: "React", comment: "If you're looking for an expert in React, look no further. Carson won't disappoint." },
-    { id: 3, userId: 3, endorsedBy: "Josh Robers", skill: "React, Typescript", comment: "Truly a frontend wizard. I recommend this man if you have a project that involves React and Typescript." },
+    {
+      id: "123456",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Nicole Dakota",
+        username: "NicoleDa_24",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      timestamp: "2024-05-29T14:00:00Z",
+      message:
+        "John's leadership skills are outstanding. He guided our team through challenging projects with ease.",
+      likes: 6,
+      comments: 18,
+    },
+    {
+      id: "123457",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Alex Johnson",
+        username: "AlexJ_89",
+        profilePictureUrl: "https://example.com/profiles/alexjohnson.jpg",
+        profileUrl: "https://example.com/users/AlexJ_89",
+      },
+      timestamp: "2024-05-29T15:30:00Z",
+      message:
+        "John consistently delivers high-quality work on time. His dedication is unmatched.",
+      likes: 15,
+      comments: 3,
+    },
+    {
+      id: "123458",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Maria Hernandez",
+        username: "MariaHern_91",
+        profilePictureUrl: "https://example.com/profiles/mariahernandez.jpg",
+        profileUrl: "https://example.com/users/MariaHern_91",
+      },
+      timestamp: "2024-05-30T10:00:00Z",
+      message:
+        "John's problem-solving skills are exceptional. He always finds innovative solutions.",
+      likes: 20,
+      comments: 10,
+    },
+    {
+      id: "123459",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "John Smith",
+        username: "JohnS_78",
+        profilePictureUrl: "https://example.com/profiles/johnsmith.jpg",
+        profileUrl: "https://example.com/users/JohnS_78",
+      },
+      timestamp: "2024-05-30T12:45:00Z",
+      message:
+        "John is a fantastic team player, always willing to help and support his colleagues.",
+      likes: 8,
+      comments: 2,
+    },
+    {
+      id: "123460",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Emma Brown",
+        username: "EmmaB_56",
+        profilePictureUrl: "https://example.com/profiles/emmabrown.jpg",
+        profileUrl: "https://example.com/users/EmmaB_56",
+      },
+      timestamp: "2024-05-30T14:20:00Z",
+      message:
+        "John's expertise in project management is impressive. He keeps everything on track.",
+      likes: 12,
+      comments: 5,
+    },
+    {
+      id: "123461",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "David Lee",
+        username: "DavidL_33",
+        profilePictureUrl: "https://example.com/profiles/davidlee.jpg",
+        profileUrl: "https://example.com/users/DavidL_33",
+      },
+      timestamp: "2024-05-31T09:15:00Z",
+      message:
+        "John has a keen eye for detail and ensures nothing is overlooked in his work.",
+      likes: 10,
+      comments: 8,
+    },
+    {
+      id: "123462",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Sophia Miller",
+        username: "SophiaM_44",
+        profilePictureUrl: "https://example.com/profiles/sophiamiller.jpg",
+        profileUrl: "https://example.com/users/SophiaM_44",
+      },
+      timestamp: "2024-05-31T11:30:00Z",
+      message:
+        "John's communication skills are top-notch. He ensures everyone is on the same page.",
+      likes: 9,
+      comments: 4,
+    },
+    {
+      id: "123463",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Michael Clark",
+        username: "MichaelC_27",
+        profilePictureUrl: "https://example.com/profiles/michaelclark.jpg",
+        profileUrl: "https://example.com/users/MichaelC_27",
+      },
+      timestamp: "2024-05-31T13:00:00Z",
+      message:
+        "John is a creative thinker, always bringing fresh ideas to the table.",
+      likes: 14,
+      comments: 7,
+    },
+    {
+      id: "123464",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Isabella Walker",
+        username: "IsabellaW_22",
+        profilePictureUrl: "https://example.com/profiles/isabellawalker.jpg",
+        profileUrl: "https://example.com/users/IsabellaW_22",
+      },
+      timestamp: "2024-06-01T08:00:00Z",
+      message:
+        "John's strategic thinking has greatly benefited our team and company.",
+      likes: 18,
+      comments: 12,
+    },
+    {
+      id: "123465",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Ethan Martinez",
+        username: "EthanM_99",
+        profilePictureUrl: "https://example.com/profiles/ethanmartinez.jpg",
+        profileUrl: "https://example.com/users/EthanM_99",
+      },
+      timestamp: "2024-06-01T09:45:00Z",
+      message:
+        "John's dedication to his work is evident in everything he does.",
+      likes: 11,
+      comments: 6,
+    },
+    {
+      id: "123466",
+      recipient: {
+        name: "John Smith",
+        username: "JohnSm_20",
+        profilePictureUrl: "https://example.com/profiles/nicoledakota.jpg",
+        profileUrl: "https://example.com/users/NicoleDa_24",
+      },
+      endorser: {
+        name: "Olivia Davis",
+        username: "OliviaD_11",
+        profilePictureUrl: "https://example.com/profiles/oliviadavis.jpg",
+        profileUrl: "https://example.com/users/OliviaD_11",
+      },
+      timestamp: "2024-06-01T11:20:00Z",
+      message:
+        "John is a true professional, always delivering top-quality work.",
+      likes: 17,
+      comments: 9,
+    },
   ],
   isLoading: false,
   error: undefined,
@@ -31,13 +257,15 @@ const initialState: EndorsementState = {
 //* Async thunk for fetching endorsements
 
 export const fetchEndorsements = createAsyncThunk(
-  'endorsements/fetchEndorsements',
+  "endorsements/fetchEndorsements",
   async (userId: number, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`----------i dont have the endpoint---------'${userId}`);
+      const response = await axios.get(
+        `----------i dont have the endpoint---------'${userId}`
+      );
       return response.data;
     } catch (error) {
-      return rejectWithValue('Failed to fetch endorsements');
+      return rejectWithValue("Failed to fetch endorsements");
     }
   }
 );
@@ -45,20 +273,23 @@ export const fetchEndorsements = createAsyncThunk(
 //* Async thunk for adding an endorsement
 
 export const addEndorsement = createAsyncThunk(
-  'endorsements/addEndorsement',
+  "endorsements/addEndorsement",
   async (endorsementData: Endorsement, { rejectWithValue }) => {
     try {
-      const response = await axios.post('----------i dont have the endpoint---------', endorsementData);
+      const response = await axios.post(
+        "----------i dont have the endpoint---------",
+        endorsementData
+      );
       return response.data;
     } catch (error) {
-      return rejectWithValue('Failed to add endorsement');
+      return rejectWithValue("Failed to add endorsement");
     }
   }
 );
 
 //* The slice that handles endorsements
 const endorsementsSlice = createSlice({
-  name: 'endorsements',
+  name: "endorsements",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -78,14 +309,14 @@ const endorsementsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addEndorsement.fulfilled, (state, action) => {
-        state.endorsements.push(action.payload); 
+        state.endorsements.push(action.payload);
         state.isLoading = false;
       })
       .addCase(addEndorsement.rejected, (state, action) => {
         state.error = action.payload as string;
         state.isLoading = false;
       });
-  }
+  },
 });
 
 export default endorsementsSlice.reducer;
