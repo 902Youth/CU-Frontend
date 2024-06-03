@@ -26,6 +26,7 @@
   background-color: var(--primary-gray);
   height: 6px;
   width: 85%;
+  margin: 2%
 }
 
 .default-background-pic {
@@ -97,7 +98,8 @@
 
 .container-skills {
   /* border: 2px solid var(--primary-gray); */
-  height: 20rem;
+  height: 15rem;
+  overflow-y: scroll;
   width: 100%;
   text-align: center;
   margin-right: 2rem;
@@ -106,7 +108,7 @@
 .container-bio {
   /* border: 2px solid var(--primary-gray); */
   height: 10rem;
-  width: 100%;
+  width: 80%;
   text-align: center;
   padding: 2%;
 }
