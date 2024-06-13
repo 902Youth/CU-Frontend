@@ -3,7 +3,7 @@ import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import "./Home.css";
 import { bgUri, pfpUri } from "./mockData";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
-import Icons from "../../Icons/icons";
+import SearchBar from "../Search/SearchBar";
 
 interface User {
   name: string;
@@ -33,7 +33,6 @@ const Home: React.FC = () => {
     bgPic: "",
   });
 
-
   const handleMyProfile = () => {
     setDiffUser({
       name: "",
@@ -52,6 +51,10 @@ const Home: React.FC = () => {
   return (
     <div className="home-container">
       <div className="endorsement-feed-wrapper">
+        <span className="searchBar">
+          <SearchBar />
+        </span>
+
         <EndorsementFeed />
       </div>
 
@@ -60,7 +63,7 @@ const Home: React.FC = () => {
           <ProfileQuickView
             name="Chris Hemsworth"
             position="HR Specialist"
-            department={'hr'}
+            department={"hr"}
             userName="@ChrisH_72"
             endorsements={15}
             bio="A budding HR specialist looking for a small to medium sized company!"
@@ -68,6 +71,8 @@ const Home: React.FC = () => {
             badge="test"
             pfp={pfpUri}
             bgPic={bgUri}
+            edit={false}
+            myProfile={showMyProfile}
           />
         ) : (
           <>
@@ -83,6 +88,8 @@ const Home: React.FC = () => {
               badge={diffUser.badge}
               pfp={diffUser.pfp}
               bgPic={diffUser.bgPic}
+              edit={false}
+              myProfile={showMyProfile}
             />
           </>
         )}
