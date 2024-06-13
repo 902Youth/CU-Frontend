@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import "./Home.css";
 import { bgUri, pfpUri } from "./mockData";
+import EndorsementFeed from "../Endorsement/EndorsementFeed";
 import Icons from "../../Icons/icons";
 
 interface User {
@@ -49,10 +50,12 @@ const Home: React.FC = () => {
     setShowMyProfile(true);
   };
   return (
-    <div className="homeContainer">
-      <div className="feed"> test</div>
+    <div className="home-container">
+      <div className="endorsement-feed-wrapper">
+        <EndorsementFeed />
+      </div>
 
-      <div className="quickView">
+      <div className="quick-view-wrapper">
         {showMyProfile ? (
           <ProfileQuickView
             name="Chris Hemsworth"

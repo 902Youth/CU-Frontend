@@ -14,7 +14,8 @@ const NavBar: React.FC<{className: string}> = () => {
   return (
     <div className="container-nav-bar">
       <Logo />
-      {isLoggedIn && <NavItems />}
+      {/* temporarily set to true so navbar items can be viewed and clicked on. */}
+      {(isLoggedIn || true) && <NavItems />}
     </div>
   );
 }
