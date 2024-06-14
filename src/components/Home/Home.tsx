@@ -20,6 +20,7 @@ interface User {
 }
 
 const Home: React.FC = () => {
+  const [currPage, setCurrPage] = useState<string>("endorsements");
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
@@ -55,8 +56,11 @@ const Home: React.FC = () => {
 
     <div className="home-container">
       <div className="endorsement-feed-wrapper">
-        <ProfileViewNavTabs />
-        <EndorsementFeed />
+        <ProfileViewNavTabs currPage={currPage }setCurrPage={setCurrPage} />
+        {currPage === "endorsements" && <EndorsementFeed />}
+        {currPage === "experience" && <h1>Experience</h1>}
+        {currPage === "projects" && <h1>Projects</h1>}
+        {currPage === "settings" && <h1>Settings</h1>}
       </div>
 
       <div className="quick-view-wrapper">
