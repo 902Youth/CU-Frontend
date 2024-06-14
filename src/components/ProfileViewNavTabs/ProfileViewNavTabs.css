@@ -1,0 +1,17 @@
+.profile-view-nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  padding: 0 0 10px 0;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.nav-bar-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-right: 20px;
+  font-weight: 600;
+  color: #979797;
+}

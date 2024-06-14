@@ -3,6 +3,7 @@ import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import "./Home.css";
 import { bgUri, pfpUri } from "./mockData";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
+import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
 import Icons from "../../Icons/icons";
 
 interface User {
@@ -49,9 +50,12 @@ const Home: React.FC = () => {
     });
     setShowMyProfile(true);
   };
+  
   return (
+
     <div className="home-container">
       <div className="endorsement-feed-wrapper">
+        <ProfileViewNavTabs />
         <EndorsementFeed />
       </div>
 
