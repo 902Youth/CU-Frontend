@@ -1,0 +1,10 @@
+.primary-button {
+    font-size: 12px;
+    color: white;
+    background-color: #597792;
+    border-radius: 20px;
+    width:max-content;
+    height: min-content;
+    padding: 8px 20px;
+    border: none;
+}

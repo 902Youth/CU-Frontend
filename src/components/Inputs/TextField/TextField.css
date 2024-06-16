@@ -1,0 +1,13 @@
+.container-input-text-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-input-text-field > label {
+    font-size: 12px;
+    font-weight: bold;
+}
+ 
+.container-input-text-field > input::placeholder {
+    color: #c0c0c0;
+}

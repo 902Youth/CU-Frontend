@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import "./Home.css";
+import { useState } from "react";
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
-import EndorsementFeed from "../Endorsement/EndorsementFeed";
+import ProfileSetupForm from "../ProfileSetupForm/ProfileSetupForm";
 import User from "../ProfileQuickView/User";
-import { bgUri, pfpUri } from "./mockData";
+import { bgUri, pfpUri } from "../Home/mockData";
 
-const Home: React.FC = () => {
+import "./ProfileSetup.css";
+
+const ProfileSetup: React.FC = () => {
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
+
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
     userName: "",
@@ -35,10 +37,11 @@ const Home: React.FC = () => {
     });
     setShowMyProfile(true);
   };
+
   return (
     <div className="home-container">
-      <div className="endorsement-feed-wrapper">
-        <EndorsementFeed />
+      <div className="profile-setup-wrapper">
+        <ProfileSetupForm />
       </div>
 
       <div className="quick-view-wrapper">
@@ -77,4 +80,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default ProfileSetup;

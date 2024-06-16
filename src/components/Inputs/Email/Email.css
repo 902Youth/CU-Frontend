@@ -1,0 +1,8 @@
+.container-input-email > label {
+    font-size: 12px;
+    font-weight: bold;
+  }
+ 
+.container-input-email > input::placeholder {
+    color: #c0c0c0;
+}
