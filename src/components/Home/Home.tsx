@@ -7,6 +7,7 @@ import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
 import Icons from "../../Icons/icons";
 import Experience from "../Experience/Experience";
 import Projects from "../Projects/Projects";
+import Settings from "../Settings/Settings";
 
 interface User {
   name: string;
@@ -22,7 +23,7 @@ interface User {
 }
 
 const Home: React.FC = () => {
-  const [currPage, setCurrPage] = useState<string>("projects");
+  const [currPage, setCurrPage] = useState<string>("endorsements");
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
@@ -62,7 +63,7 @@ const Home: React.FC = () => {
         {currPage === "endorsements" && <EndorsementFeed />}
         {currPage === "experience" && <Experience />}
         {currPage === "projects" && <Projects />}
-        {currPage === "settings" && <h1>Settings</h1>}
+        {currPage === "settings" && <Settings />}
       </div>
 
       <div className="quick-view-wrapper">
