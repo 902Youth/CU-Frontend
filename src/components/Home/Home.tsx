@@ -6,6 +6,7 @@ import EndorsementFeed from "../Endorsement/EndorsementFeed";
 import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
 import Icons from "../../Icons/icons";
 import Experience from "../Experience/Experience";
+import Projects from "../Projects/Projects";
 
 interface User {
   name: string;
@@ -21,7 +22,7 @@ interface User {
 }
 
 const Home: React.FC = () => {
-  const [currPage, setCurrPage] = useState<string>("experience");
+  const [currPage, setCurrPage] = useState<string>("projects");
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
@@ -60,7 +61,7 @@ const Home: React.FC = () => {
         <ProfileViewNavTabs currPage={currPage }setCurrPage={setCurrPage} />
         {currPage === "endorsements" && <EndorsementFeed />}
         {currPage === "experience" && <Experience />}
-        {currPage === "projects" && <h1>Projects</h1>}
+        {currPage === "projects" && <Projects />}
         {currPage === "settings" && <h1>Settings</h1>}
       </div>
 
