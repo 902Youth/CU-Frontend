@@ -39,7 +39,7 @@ const ProfileSetup: React.FC = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="profile-setup-container">
       <div className="profile-setup-wrapper">
         <ProfileSetupForm />
       </div>

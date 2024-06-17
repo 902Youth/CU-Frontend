@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { AppState } from "../../redux/Store";
 import SaveButton from "../Buttons/SaveButton/SaveButton";
 import TextField from "../Inputs/TextField/TextField";
 import DropDown from "../Inputs/DropDown/DropDown";
@@ -13,6 +15,10 @@ const jobTitleOptions = ["programmer", "manager"];
 const locationOptions = ["TX", "CA", "WA", "LA", "MD"];
 
 const ProfileSetupForm: React.FC = () => {
+  const selectedSkill: boolean = useSelector(
+    (state: AppState) => state.skills.selectedSkill
+  );
+
   return (
     <form className="container-profile-setup-form">
       <section className="container-profile-setup-header">
@@ -56,7 +62,10 @@ const ProfileSetupForm: React.FC = () => {
       <section className="profile-setup-form-container-skills">
         <div className="title-expand-on-your-skills">Expand on your skills</div>
         <div className="container-skill-entry">
-          <Chip id="profile-setup-skill-selected" text="Javascript" />
+          <Chip
+            id="profile-setup-skill-selected"
+            text={selectedSkill || "Select a skill"}
+          />
           <DropDown id="profile-setup-skill-years" placeholder="Years" />
           <DropDown
             id="profile-setup-skill-learn"
