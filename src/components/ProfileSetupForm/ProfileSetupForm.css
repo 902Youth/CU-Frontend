@@ -1,3 +1,5 @@
+@import '../../styles/variables.css';
+
 .container-profile-setup-header {
   display: grid;
   grid-template-areas: "setup-profile save-button";
@@ -14,7 +16,7 @@
   grid-area: save-button;
 }
 
-.line-divider {
+.line-divider-header {
   margin-top: 10px;
   margin-bottom: 30px;
   color: #e0e0e0;
@@ -63,8 +65,8 @@
 }
 
 .container-skill-entry {
-  background-color: #f7f7f7;
-  border: 1px solid #e0e0e0;
+  background-color: var(--primary-gray);
+  border: 2px solid #e0e0e0;
   border-radius: 2px;
   padding: 20px;
   display: grid;
@@ -93,8 +95,43 @@
   border-color: var(--primary-blue);
 }
 
-#profile-setup-skill-description {
+#container-profile-setup-skill-description {
   grid-area: description;
+}
+
+#profile-setup-skill-description {
   border-color: var(--primary-blue);
   height: 150px;
+}
+
+.profile-setup-form-container-portfolio-website {
+  margin-top: 50px;
+}
+
+.title-portfolio-website {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.profile-setup-portofolio-website {
+  height: 150px;
+  width: 250px;
+  background-color: var(--primary-gray);
+  border: 2px solid #e0e0e0;
+}
+
+.profile-setup-form-container-delete-account {
+  margin-top: 50px;
+}
+
+.title-delete-account {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.line-divider-delete-account {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid red;
 }

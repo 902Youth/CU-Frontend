@@ -3,6 +3,7 @@ import TextField from "../Inputs/TextField/TextField";
 import DropDown from "../Inputs/DropDown/DropDown";
 import Email from "../Inputs/Email/Email";
 import Chip from "../Chip/Chip";
+import TextArea from "../Inputs/TextArea/TextArea";
 
 import "./ProfileSetupForm.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
@@ -18,7 +19,7 @@ const ProfileSetupForm: React.FC = () => {
         <div className="profile-setup-title">Let's set up your profile!</div>
         <SaveButton />
       </section>
-      <hr className="line-divider" />
+      <hr className="line-divider-header" />
 
       <section className="profile-setup-form-container-info">
         <TextField
@@ -36,7 +37,7 @@ const ProfileSetupForm: React.FC = () => {
           placeholder="Username"
           label="Username"
         />
-         <PrimaryButton text="Reset Password" />
+        <PrimaryButton text="Reset Password" />
         <div className="title-more-about-you">More about you</div>
         <DropDown
           id="profile-setup-job-title"
@@ -55,23 +56,26 @@ const ProfileSetupForm: React.FC = () => {
       <section className="profile-setup-form-container-skills">
         <div className="title-expand-on-your-skills">Expand on your skills</div>
         <div className="container-skill-entry">
-          <Chip id="profile-setup-skill-selected" text="Javascript"/>
-          <DropDown id="profile-setup-skill-years"/>
-          <DropDown id="profile-setup-skill-learn"/>
-          <DropDown id="profile-setup-skill-level"/>
-          <textarea id="profile-setup-skill-description"></textarea>
+          <Chip id="profile-setup-skill-selected" text="Javascript" />
+          <DropDown id="profile-setup-skill-years" placeholder="Years" />
+          <DropDown
+            id="profile-setup-skill-learn"
+            placeholder="How did you learn?"
+          />
+          <DropDown id="profile-setup-skill-level" placeholder="Level" />
+          <TextArea id="profile-setup-skill-description" label="Description" />
         </div>
       </section>
 
-      <section className="container-portfolio-website">
-        <div>Portfolio/Website</div>
-        <div>grey square</div>
+      <section className="profile-setup-form-container-portfolio-website">
+        <div className="title-portfolio-website">Portfolio/Website</div>
+        <div className="profile-setup-portofolio-website"></div>
       </section>
 
-      <section className="delete-account">
-        <div>Danger Zone</div>
-        <hr />
-        <button>Delete Account</button>
+      <section className="profile-setup-form-container-delete-account">
+        <div className="title-delete-account">Danger Zone</div>
+        <hr className="line-divider-delete-account" />
+        <PrimaryButton text="Delete Account" color="red" />
       </section>
     </form>
   );
