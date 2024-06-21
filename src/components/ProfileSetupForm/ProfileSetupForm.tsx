@@ -4,18 +4,17 @@ import SaveButton from "../Buttons/SaveButton/SaveButton";
 import TextField from "../Inputs/TextField/TextField";
 import DropDown from "../Inputs/DropDown/DropDown";
 import Email from "../Inputs/Email/Email";
-import Chip from "../Chip/Chip";
-import TextArea from "../Inputs/TextArea/TextArea";
+import SkillNotSelected from "./SkillNotSelected";
+import SkillSelected from "./SkillSelected";
 
 import "./ProfileSetupForm.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 
 // Array for all drop down options
 const jobTitleOptions = ["programmer", "manager"];
-const locationOptions = ["TX", "CA", "WA", "LA", "MD"];
 
 const ProfileSetupForm: React.FC = () => {
-  const selectedSkill: boolean = useSelector(
+  const selectedSkill: string | null = useSelector(
     (state: AppState) => state.skills.selectedSkill
   );
 
@@ -47,12 +46,13 @@ const ProfileSetupForm: React.FC = () => {
         <div className="title-more-about-you">More about you</div>
         <DropDown
           id="profile-setup-job-title"
+          placeholder="Select..."
           options={jobTitleOptions}
           label="Job Title"
         />
-        <DropDown
+        <TextField
           id="profile-setup-location"
-          options={locationOptions}
+          placeholder="Location"
           label="Location"
         />
         <Email id="profile-setup-email" placeholder="Email" label="Email" />
@@ -61,19 +61,7 @@ const ProfileSetupForm: React.FC = () => {
 
       <section className="profile-setup-form-container-skills">
         <div className="title-expand-on-your-skills">Expand on your skills</div>
-        <div className="container-skill-entry">
-          <Chip
-            id="profile-setup-skill-selected"
-            text={selectedSkill || "Select a skill"}
-          />
-          <DropDown id="profile-setup-skill-years" placeholder="Years" />
-          <DropDown
-            id="profile-setup-skill-learn"
-            placeholder="How did you learn?"
-          />
-          <DropDown id="profile-setup-skill-level" placeholder="Level" />
-          <TextArea id="profile-setup-skill-description" label="Description" />
-        </div>
+        {selectedSkill ? <SkillSelected skill={selectedSkill} /> : <SkillNotSelected/>}
       </section>
 
       <section className="profile-setup-form-container-portfolio-website">

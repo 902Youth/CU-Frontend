@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import "./Home.css";
+
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
 import User from "../ProfileQuickView/User";
 import { bgUri, pfpUri } from "./mockData";
+
+import "./Home.css";
 
 const Home: React.FC = () => {
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);

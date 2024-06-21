@@ -1,0 +1,17 @@
+.container-skill-entry {
+    height: 256px;
+    width: 100%;
+    background-color: var(--primary-gray);
+    border: 2px solid #e0e0e0;
+    border-radius: 2px;
+    padding: 20px;
+  }
+
+  .skill-not-selected {
+    display: flex;
+    font-size: 13px;
+    justify-content: center;
+    align-items:center;
+    color: #c0c0c0;
+  }
+

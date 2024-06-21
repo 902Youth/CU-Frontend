@@ -64,19 +64,6 @@
   margin-bottom: 25px;
 }
 
-.container-skill-entry {
-  background-color: var(--primary-gray);
-  border: 2px solid #e0e0e0;
-  border-radius: 2px;
-  padding: 20px;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-areas:
-    "skill years learn level"
-    "description description description description";
-  align-items: center;
-}
-
 #profile-setup-skill-selected {
   grid-area: skill;
 }
@@ -113,13 +100,6 @@
   font-weight: bold;
   font-size: 15px;
   margin-bottom: 25px;
-}
-
-.profile-setup-portofolio-website {
-  height: 150px;
-  width: 250px;
-  background-color: var(--primary-gray);
-  border: 2px solid #e0e0e0;
 }
 
 .profile-setup-form-container-delete-account {
