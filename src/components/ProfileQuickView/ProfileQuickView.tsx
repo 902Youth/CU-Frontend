@@ -16,6 +16,8 @@ interface ProfileProps {
   bio: string;
   pfp: string;
   bgPic: string;
+  edit?: boolean;
+  myProfile: boolean;
 }
 
 export const ProfileQuickView: React.FC<ProfileProps> = ({
@@ -29,6 +31,8 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
   skills,
   pfp,
   bgPic,
+  edit,
+  myProfile,
 }) => {
   const tempSkills = ["JavaScript", "TypeScript", "HTML", "CSS", "AWS"];
   const navigate = useNavigate();
@@ -48,7 +52,9 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
   return (
     <div className="container-quickview">
       <div className="container-profile">
-        {bgPic.trim() !== "" ? (
+        {!edit ? (
+            <>
+            {bgPic.trim() !== "" ? (
           <div
             style={{
               position: "relative",
@@ -57,18 +63,21 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
               alignItems: "center",
             }}
           >
-            <img
-              src={bgPic}
-              alt="user background picture"
-              className="user-bg-pic"
-            />
-            {pfp.trim() !== "" ? (
-              <div className="user-pfp">
-                <img src={pfp} alt="user profile pic" />
-              </div>
-            ) : (
-              <div className="default-pfp"></div>
-            )}
+              <>
+                <img
+                  src={bgPic}
+                  alt="user background picture"
+                  className="user-bg-pic"
+                />
+                {pfp.trim() !== "" ? (
+                  <div className="user-pfp">
+                    <img src={pfp} alt="user profile pic" />
+                  </div>
+                ) : (
+                  <div className="default-pfp"></div>
+                )}
+              </>
+           
           </div>
         ) : (
           <div className="default-background-pic">
@@ -81,12 +90,60 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
             )}
           </div>
         )}
+            </>
+        ) : (
+            <>
+            {bgPic.trim() !== "" ? (
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+              <>
+                <img
+                  src={bgPic}
+                  alt="user background picture"
+                  className="edit-user-bg-pic"
+                />
+                {pfp.trim() !== "" ? (
+                  <div className="user-pfp-edit">
+                    <img src={pfp} alt="user profile pic" />
+                  </div>
+                ) : (
+                  <div className="default-pfp"></div>
+                )}
+              </>
+           
+          </div>
+        ) : (
+          <div className="edit-from-default">
+            {pfp.trim() !== "" ? (
+              <div className="user-pfp-edit">
+                <img src={pfp} alt="user profile pic" />
+              </div>
+            ) : (
+              <div className="default-pfp"></div>
+            )}
+          </div>
+        )}
+            </>
+        )}
 
-        <div className="edit-profile">
-          <NotePencil size={25} onClick={() => handleNav("account")} />
-        </div>
 
-        <div className="profile-info">
+        {myProfile && !edit && (
+          <div className="edit-profile">
+            <NotePencil
+              size={25}
+              onClick={() => handleNav("account")}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        )}
+
+        <div className={ !edit ? "profile-info" : "profile-info-edit"}>
           <p>{name}</p>
           <p>{userName}</p>
           <p>{position}</p>
@@ -96,7 +153,7 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
             <img
               src={Icons[badgeKey]}
               alt="Badge"
-              style={{ height: "60px", width: "60px", marginBottom: "2%" }}
+              style={{ height: "55px", width: "auto", marginBottom: "2%" }}
             />
           )}
 

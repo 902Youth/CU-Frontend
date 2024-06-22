@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
-
+import SearchBar from "../Search/SearchBar";
 import User from "../ProfileQuickView/User";
 import { bgUri, pfpUri } from "./mockData";
 import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
@@ -50,11 +50,17 @@ const Home: React.FC = () => {
 
     <div className="home-container">
       <div className="endorsement-feed-wrapper">
+
+        <span className="searchBar">
+          <SearchBar />
+        </span>
+
         <ProfileViewNavTabs currPage={currPage }setCurrPage={setCurrPage} />
         {currPage === "endorsements" && <EndorsementFeed />}
         {currPage === "experience" && <Experience />}
         {currPage === "projects" && <Projects />}
         {currPage === "settings" && <Settings />}
+
       </div>
 
       <div className="quick-view-wrapper">
@@ -70,6 +76,8 @@ const Home: React.FC = () => {
             badge="test"
             pfp={pfpUri}
             bgPic={bgUri}
+            edit={false}
+            myProfile={showMyProfile}
           />
         ) : (
           <>
@@ -85,6 +93,8 @@ const Home: React.FC = () => {
               badge={diffUser.badge}
               pfp={diffUser.pfp}
               bgPic={diffUser.bgPic}
+              edit={false}
+              myProfile={showMyProfile}
             />
           </>
         )}

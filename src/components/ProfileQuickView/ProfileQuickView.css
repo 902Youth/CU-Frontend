@@ -94,15 +94,73 @@
 .profile-endorsements {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .container-skills {
   /* border: 2px solid var(--primary-gray); */
   height: 15rem;
   overflow-y: scroll;
-  width: 100%;
-  text-align: center;
-  margin-right: 2rem;
+  width: 90%;
+
+}
+
+.edit-user-bg-pic {
+    height: 10rem;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.edit-user-bg-pic:hover {
+    border: 4px solid lightblue;
+    cursor: pointer;
+}
+
+.edit-from-default {
+    background-color: var(--primary-gray);
+    height: 10rem;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+.edit-from-default:hover {
+    border: 4px solid lightblue;
+    cursor: pointer;
+}
+
+.user-pfp-edit {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    margin: 5px;
+    overflow: hidden; 
+}
+
+.user-pfp-edit img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    object-position: center; /* Centers the image */
+}
+
+.user-pfp-edit:hover {
+    border: 4px solid lightblue;
+    cursor: pointer;
+}
+
+.profile-info-edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    margin-top: 16%;
 }
 
 .container-bio {
