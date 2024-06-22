@@ -2,12 +2,20 @@ import React, { useState } from "react";
 
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
+
 import User from "../ProfileQuickView/User";
 import { bgUri, pfpUri } from "./mockData";
+import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
+import Icons from "../../Icons/icons";
+import Experience from "../Experience/Experience";
+import Projects from "../Projects/Projects";
+import Settings from "../Settings/Settings";
+
 
 import "./Home.css";
 
 const Home: React.FC = () => {
+  const [currPage, setCurrPage] = useState<string>("endorsements");
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
@@ -37,10 +45,16 @@ const Home: React.FC = () => {
     });
     setShowMyProfile(true);
   };
+  
   return (
+
     <div className="home-container">
       <div className="endorsement-feed-wrapper">
-        <EndorsementFeed />
+        <ProfileViewNavTabs currPage={currPage }setCurrPage={setCurrPage} />
+        {currPage === "endorsements" && <EndorsementFeed />}
+        {currPage === "experience" && <Experience />}
+        {currPage === "projects" && <Projects />}
+        {currPage === "settings" && <Settings />}
       </div>
 
       <div className="quick-view-wrapper">
