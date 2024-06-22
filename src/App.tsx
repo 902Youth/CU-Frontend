@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 
 import NavBar from "./components/NavBar/NavBar";
+import ProfileSetup from "./components/ProfileSetup/ProfileSetup";
 // import Footer from "./components/Footer/Footer";
 
 import "./styles/App.css";
@@ -28,7 +29,7 @@ const App: React.FC = () => {
             <Route path="/jobs" element={<h1>Jobs</h1>}></Route>
             <Route
               path="/profile-setup"
-              element={<h1>Profile Setup</h1>}
+              element={<ProfileSetup/>}
             ></Route>
             <Route path="/sign-in" element={<h1>Sign In</h1>}></Route>
             <Route path="/sign-up" element={<h1>Sign Up</h1>}></Route>

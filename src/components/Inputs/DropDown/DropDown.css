@@ -1,0 +1,9 @@
+.container-input-drop-down {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-input-drop-down > label {
+  font-size: 12px;
+  font-weight: bold;
+}

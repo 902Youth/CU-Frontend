@@ -1,22 +1,14 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
-import EndorsementFeed from "../Endorsement/EndorsementFeed";
-
+import ProfileSetupForm from "../ProfileSetupForm/ProfileSetupForm";
 import User from "../ProfileQuickView/User";
-import { bgUri, pfpUri } from "./mockData";
-import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
-import Icons from "../../Icons/icons";
-import Experience from "../Experience/Experience";
-import Projects from "../Projects/Projects";
-import Settings from "../Settings/Settings";
+import { bgUri, pfpUri } from "../Home/mockData";
 
+import "./ProfileSetup.css";
 
-import "./Home.css";
-
-const Home: React.FC = () => {
-  const [currPage, setCurrPage] = useState<string>("endorsements");
+const ProfileSetup: React.FC = () => {
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
+
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
     userName: "",
@@ -45,16 +37,11 @@ const Home: React.FC = () => {
     });
     setShowMyProfile(true);
   };
-  
-  return (
 
-    <div className="home-container">
-      <div className="endorsement-feed-wrapper">
-        <ProfileViewNavTabs currPage={currPage }setCurrPage={setCurrPage} />
-        {currPage === "endorsements" && <EndorsementFeed />}
-        {currPage === "experience" && <Experience />}
-        {currPage === "projects" && <Projects />}
-        {currPage === "settings" && <Settings />}
+  return (
+    <div className="profile-setup-container">
+      <div className="profile-setup-wrapper">
+        <ProfileSetupForm />
       </div>
 
       <div className="quick-view-wrapper">
@@ -93,4 +80,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default ProfileSetup;

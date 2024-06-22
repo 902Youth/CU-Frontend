@@ -1,0 +1,118 @@
+@import '../../styles/variables.css';
+
+.container-profile-setup-header {
+  display: grid;
+  grid-template-areas: "setup-profile save-button";
+  justify-content: space-between;
+}
+
+.profile-setup-title {
+  grid-area: setup-profile;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-setup-save-button {
+  grid-area: save-button;
+}
+
+.line-divider-header {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+}
+
+.profile-setup-form-container-info {
+  display: grid;
+  grid-template-areas:
+    "firstname lastname username resetpasswordbutton"
+    "moreaboutyou moreaboutyou moreaboutyou moreaboutyou"
+    "jobtitle location email changeemail";
+  grid-gap: 40px;
+  align-items: end;
+}
+
+#profile-setup-first-name {
+  grid-area: firstname;
+}
+
+#profile-setup-last-name {
+  grid-area: lastname;
+}
+
+#profile-setup-username {
+  grid-area: username;
+}
+
+.reset-password-button {
+  grid-area: resetpasswordbutton;
+}
+
+.title-more-about-you {
+  grid-area: moreaboutyou;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.profile-setup-form-container-skills {
+  margin-top: 50px;
+}
+
+.title-expand-on-your-skills {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+#profile-setup-skill-selected {
+  grid-area: skill;
+}
+
+#profile-setup-skill-years {
+  grid-area: years;
+  border-color: var(--primary-blue);
+}
+
+#profile-setup-skill-learn {
+  grid-area: learn;
+  border-color: var(--primary-blue);
+}
+
+#profile-setup-skill-level {
+  grid-area: level;
+  border-color: var(--primary-blue);
+}
+
+#container-profile-setup-skill-description {
+  grid-area: description;
+}
+
+#profile-setup-skill-description {
+  border-color: var(--primary-blue);
+  height: 150px;
+}
+
+.profile-setup-form-container-portfolio-website {
+  margin-top: 50px;
+}
+
+.title-portfolio-website {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.profile-setup-form-container-delete-account {
+  margin-top: 50px;
+}
+
+.title-delete-account {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.line-divider-delete-account {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid red;
+}
