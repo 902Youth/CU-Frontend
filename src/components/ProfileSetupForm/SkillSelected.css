@@ -1,0 +1,8 @@
+.skill-selected {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "skill years learn level"
+      "description description description description";
+    align-items: center;
+  }

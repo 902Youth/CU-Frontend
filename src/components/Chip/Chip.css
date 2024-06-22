@@ -1,0 +1,13 @@
+@import "../../styles/variables.css";
+
+.chip {
+  font-weight: bold;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid var(--primary-blue);
+  border-radius: 20px;
+  width: 80px;
+  text-align: center;
+  height: min-content;
+  padding: 5px 60px;
+}
