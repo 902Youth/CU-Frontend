@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
-import TempAccount from "./components/tempAccount/tempAccount";
+import Account from "./components/Account/Account";
 import NavBar from "./components/NavBar/NavBar";
 import ProfileSetup from "./components/ProfileSetup/ProfileSetup";
 // import Footer from "./components/Footer/Footer";
@@ -21,6 +21,7 @@ const App: React.FC = () => {
             {/* for sign in */}
             <Route index element={<Home />}></Route>
             <Route path="/home" element={<Home />} />
+            <Route path="/user/:userId" element={<Account />} />
             <Route path="/profile" element={<h1>Profile</h1>}></Route>
             <Route path="/endorsements" element={<h1>Endorsements</h1>}></Route>
             <Route
@@ -35,7 +36,7 @@ const App: React.FC = () => {
             <Route path="/sign-in" element={<h1>Sign In</h1>}></Route>
             <Route path="/sign-up" element={<h1>Sign Up</h1>}></Route>
 
-            <Route path="/account" element={<TempAccount />}/>
+            <Route path="/account" element={<Account />}/>
           </Routes>
         </div>
       </div>

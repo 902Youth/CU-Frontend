@@ -4,6 +4,8 @@ import { useState } from "react";
 import SearchResults from "./SearchResultsList";
 
 const SearchBar = () => {
+  //I need to add the icon which allows a user to choose if they're searching for a user, a skill, a job, etc.
+  //Also add a default text for if at /user/:userId the user doesn't have a project. 
   const [input, setInput] = useState("");
   const [results, setResults] = useState<string[]>([]);
   const users = [
@@ -48,7 +50,7 @@ const SearchBar = () => {
         <div className="input-wrapper">
           <MagnifyingGlass size={24} id="search-icon" />
           <input
-            placeholder="Type to search..."
+            placeholder="Search"
             value={input}
             onChange={(e) => handleChange(e.target.value)}
           />

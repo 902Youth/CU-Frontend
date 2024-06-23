@@ -2,8 +2,13 @@ import { Route, Routes } from "react-router-dom";
 
 import "./ProfileViewNavTabs.css";
 
-const ProfileViewNavTabs: React.FC = ( props ) => {
-  const { currPage, setCurrPage } = props;
+interface ProfileViewNavTabsProps {
+  currPage: string;
+  setCurrPage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ProfileViewNavTabs: React.FC<ProfileViewNavTabsProps> = ({currPage, setCurrPage}) => {
+
   
   return (
     <div className="profile-view-nav-bar">
