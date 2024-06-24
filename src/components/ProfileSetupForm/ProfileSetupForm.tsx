@@ -10,9 +10,6 @@ import SkillSelected from "./SkillSelected";
 import "./ProfileSetupForm.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 
-// Array for all drop down options
-const jobTitleOptions = ["programmer", "manager"];
-
 const ProfileSetupForm: React.FC = () => {
   const selectedSkill: string | null = useSelector(
     (state: AppState) => state.skills.selectedSkill
@@ -44,10 +41,9 @@ const ProfileSetupForm: React.FC = () => {
         />
         <PrimaryButton text="Reset Password" />
         <div className="title-more-about-you">More about you</div>
-        <DropDown
+        <TextField
           id="profile-setup-job-title"
-          placeholder="Select..."
-          options={jobTitleOptions}
+          placeholder="Job Title"
           label="Job Title"
         />
         <TextField
