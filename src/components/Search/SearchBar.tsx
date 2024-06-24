@@ -1,11 +1,11 @@
-import './SearchBar.css'
-import { MagnifyingGlass } from "@phosphor-icons/react"
-import { useState } from "react"
-import SearchResults from './SearchResultsList'
+import "./SearchBar.css";
+import { MagnifyingGlass } from "@phosphor-icons/react";
+import { useState } from "react";
+import SearchResults from "./SearchResultsList";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<string[]>([]);
   const users = [
     "Ava Smith",
     "Mohamed Al-Fayed",
@@ -16,44 +16,47 @@ const SearchBar = () => {
     "John Doe",
     "Maria Fernandes",
     "Chen Yu",
-    "Nadia Ali"
-  ]
+    "Nadia Ali",
+  ];
 
-  const fetchData = (value) => {
-    let foundResults = [];
+  const fetchData = (value: string) => {
+    if (value.trim() !== "") {
+      // // * insert fetch to backend here *
 
-    // * insert fetch to backend here *
-  
-    users.forEach(user => {
-      if (user.toLocaleLowerCase().includes(value.toLocaleLowerCase())) {
-        foundResults.push(user);
-        console.log(`User found with search term "${value}": ${user}`);
+      const foundResults = users.filter((user) => {
+        return user.toLocaleLowerCase().includes(value.toLocaleLowerCase());
+      });
+
+      if (foundResults.length > 0) {
+        setResults(foundResults);
       }
-    });
+    } else {
+      setResults([])
+    }
+  };
 
-    setResults(foundResults);
-  }
-
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     setInput(value);
     fetchData(value);
-  }
+  };
+
+  console.log(results);
 
   return (
     <>
-      <div className='search-container'>
+      <div className="search-container">
         <div className="input-wrapper">
           <MagnifyingGlass size={24} id="search-icon" />
-          <input 
-            placeholder="Type to search..." 
-            value={input} 
+          <input
+            placeholder="Type to search..."
+            value={input}
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>
-        <SearchResults results={results}/>
+        {results.length > 0 && <SearchResults results={results} />}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default SearchBar;

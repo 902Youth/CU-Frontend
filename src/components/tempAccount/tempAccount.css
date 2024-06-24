@@ -1,13 +1,12 @@
-.home-container {
+.accountContainer {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 65% 35%;
   height: 100vh;
-  align-items: center;
 }
 
-.endorsement-feed-wrapper {
+.account-wrapper {
   grid-column: 1/2;
-  height: 85vh;
+  height: 100vh;
   overflow-y: scroll;
   padding: 0px 10px 0px 80px;
 }
@@ -18,11 +17,4 @@
   align-items: center;
   justify-content: center;
   padding: 10%;
-}
-
-.searchBar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5%;
 }

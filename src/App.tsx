@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
-
+import TempAccount from "./components/tempAccount/tempAccount";
 import NavBar from "./components/NavBar/NavBar";
 import ProfileSetup from "./components/ProfileSetup/ProfileSetup";
 // import Footer from "./components/Footer/Footer";
 
 import "./styles/App.css";
+
 
 const App: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const App: React.FC = () => {
 
             {/* for sign in */}
             <Route index element={<Home />}></Route>
-            <Route path="/home" element={<Home />}></Route>
+            <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<h1>Profile</h1>}></Route>
             <Route path="/endorsements" element={<h1>Endorsements</h1>}></Route>
             <Route
@@ -33,6 +34,8 @@ const App: React.FC = () => {
             ></Route>
             <Route path="/sign-in" element={<h1>Sign In</h1>}></Route>
             <Route path="/sign-up" element={<h1>Sign Up</h1>}></Route>
+
+            <Route path="/account" element={<TempAccount />}/>
           </Routes>
         </div>
       </div>
