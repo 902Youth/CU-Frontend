@@ -7,10 +7,10 @@
 
 .profile-setup-wrapper {
   grid-column: 1/2;
-  height: 90vh;
+  height: 85vh;
   min-width: min-content;
   overflow-y: scroll;
-  padding: 60px 25px 0 50px;
+  padding: 60px 15px 15px 60px;
 }
 
 .quick-view-wrapper {

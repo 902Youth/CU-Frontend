@@ -47,7 +47,7 @@ const ProfileSetup: React.FC = () => {
           <SaveButton />
         </section>
         <hr className="line-divider-header" />
-        <ProfileSetupForm />
+        <ProfileSetupForm initialSetup={true} />
       </div>
 
       <div className="quick-view-wrapper">

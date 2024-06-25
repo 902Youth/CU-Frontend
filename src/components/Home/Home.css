@@ -1,16 +1,16 @@
 .home-container {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 65% 35%;
   height: 100vh;
   align-items: center;
 }
 
-.profile-view-nav-tabs-wrapper {
+.endorsement-feed-wrapper {
   grid-column: 1/2;
   height: 90vh;
   min-width: min-content;
   overflow-y: scroll;
-  padding: 0 25px 0 50px;
+  padding: 0 15px 0 60px;
 }
 
 .quick-view-wrapper {
