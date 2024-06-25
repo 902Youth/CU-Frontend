@@ -8,6 +8,6 @@
     font-weight: bold;
 }
  
-.container-input-text-field > input::placeholder {
+.container-input-text-area > input::placeholder {
     color: #c0c0c0;
 }

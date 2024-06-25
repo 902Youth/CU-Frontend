@@ -1,15 +1,16 @@
 .home-container {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 65% 35%;
   height: 100vh;
   align-items: center;
 }
 
-.endorsement-feed-wrapper {
+.profile-view-nav-tabs-wrapper {
   grid-column: 1/2;
-  height: 85vh;
+  height: 90vh;
+  min-width: min-content;
   overflow-y: scroll;
-  padding: 0px 10px 0px 80px;
+  padding: 0 25px 0 50px;
 }
 
 .quick-view-wrapper {
@@ -24,5 +25,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  margin-bottom: 25px;
 }

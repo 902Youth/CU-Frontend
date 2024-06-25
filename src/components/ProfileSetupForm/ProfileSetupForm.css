@@ -1,4 +1,4 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
 .container-profile-setup-header {
   display: grid;
@@ -28,7 +28,8 @@
     "firstname lastname username resetpasswordbutton"
     "moreaboutyou moreaboutyou moreaboutyou moreaboutyou"
     "jobtitle location email changeemail";
-  grid-gap: 40px;
+  grid-row-gap: 40px;
+  grid-column-gap: 30px;
   align-items: end;
 }
 
@@ -94,6 +95,13 @@
 
 .profile-setup-form-container-portfolio-website {
   margin-top: 50px;
+}
+
+.profile-setup-portofolio-website {
+  height: 150px;
+  width: 250px;
+  background-color: var(--primary-gray);
+  border: 2px solid #e0e0e0;
 }
 
 .title-portfolio-website {
