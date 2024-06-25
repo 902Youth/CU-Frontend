@@ -34,7 +34,7 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
 }) => {
   //In this component, I need to check if userId, which needs to be added to props still, is equal to the current logged in user. To do so, I will use a useSelect or useStoreSelect to get the current logged in user in order to compare. If they don't match, I need to swap out the NotePencil icon for a View Profile button. On click, I will add a navigation to a route called /user/${userId}
 
-  //I also need to add the save button to save any changes made inside of the ProfileQuickView
+
   const currRoute = window.location.pathname;
   const navigate = useNavigate();
   const [badgeKey, setBadgeKey] = useState<IconTypes | null>(null);
@@ -48,6 +48,8 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
     "AWS",
   ]);
   const [currBio, setCurrBio] = useState<string>(bio);
+  const [newPfp, setNewPfp] = useState<any>(null);
+  const [newBg, setNewBg] = useState<any>(null)
 
   useEffect(() => {
     const iconKey = Object.keys(Icons).find(
@@ -67,7 +69,23 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
     }
   };
 
-  console.log(tempSkills);
+  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.[0]) {
+      const inputId = event.target.id;
+      if (inputId === 'fileInputPfp') {
+        setNewPfp(event.target.files[0]);
+      } else if (inputId === 'fileInputBg') {
+        setNewBg(event.target.files[0]);
+      }
+    }
+  };
+
+  const handleClick = (inputId: string) => {
+    const fileInput = document.getElementById(inputId);
+    if (fileInput) {
+      fileInput.click();
+    }
+  };
 
   return (
     <div className="container-quickview">
@@ -123,20 +141,32 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
               >
                 <>
                   <div className="user-bg-pic">
-                    <img
-                      src={bgPic}
-                      alt="user background picture"
-                    />
+                    <img src={!newBg ? bgPic : URL.createObjectURL(newBg)} alt="user background picture" />
                     <div className="overlay-bg">
-                    <NotePencil size={32} color="#fff" />
+                    <input
+                        id="fileInputBg"
+                        type="file"
+                        style={{display: 'none'}}
+                        accept="image/*"
+                        onChange={handleFileInputChange}
+                      />
+                      <NotePencil size={32} color="#fff" onClick={() => handleClick('fileInputBg')}/>
                     </div>
                   </div>
 
                   {pfp.trim() !== "" ? (
                     <div className="user-pfp">
-                      <img src={pfp} alt="user profile pic" />
+                      <img src={!newPfp ? pfp : URL.createObjectURL(newPfp)} alt="user profile pic" />
                       <div className="overlay">
-                        <CameraPlus size={32} color="#fff" />
+                        <input
+                        id="fileInputPfp"
+                        type="file"
+                        style={{display: 'none'}}
+                        accept="image/*"
+                        onChange={handleFileInputChange}
+                      />
+                        <CameraPlus size={32} color="#fff" onClick={() => handleClick('fileInputPfp')} />
+                        
                       </div>
                     </div>
                   ) : (
@@ -168,6 +198,12 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
               onClick={() => handleNav("account")}
               style={{ cursor: "pointer" }}
             />
+          </div>
+        )}
+
+        {myProfile && currRoute === "/account" && (
+          <div className="buttonContainer">
+            <p className="saveButton">Save</p>
           </div>
         )}
 
@@ -228,3 +264,15 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
     </div>
   );
 };
+function useRef(arg0: null) {
+  throw new Error("Function not implemented.");
+}
+
+function setPhoto(imageObject: {
+  uri: string;
+  name: any;
+  size: any;
+  type: any;
+}) {
+  throw new Error("Function not implemented.");
+}
