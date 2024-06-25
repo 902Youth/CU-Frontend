@@ -2,13 +2,15 @@
   display: grid;
   grid-template-columns: 65% 35%;
   height: 100vh;
+  align-items: center;
 }
 
 .profile-setup-wrapper {
   grid-column: 1/2;
-  height: 100vh - 120px;
+  height: 85vh;
+  min-width: min-content;
   overflow-y: scroll;
-  padding: 60px 40px;
+  padding: 60px 15px 15px 60px;
 }
 
 .quick-view-wrapper {

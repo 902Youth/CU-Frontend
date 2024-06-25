@@ -7,9 +7,10 @@
 
 .endorsement-feed-wrapper {
   grid-column: 1/2;
-  height: 85vh;
+  height: 90vh;
+  min-width: min-content;
   overflow-y: scroll;
-  padding: 0px 10px 0px 80px;
+  padding: 0 15px 0 60px;
 }
 
 .quick-view-wrapper {
@@ -24,5 +25,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-top: 2%; */
+  margin-bottom: 25px;
 }
