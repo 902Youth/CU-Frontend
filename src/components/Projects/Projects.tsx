@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Projects.css";
 
 const Projects = () => {
+  //I need to add the icon used in the Figma which indicates that you can add a project
   const [projects, setProjects] = useState([
     { name: "Example of highlight", description: "Imagine there is a picture here instead of a grey box and icon" },
     { name: "Another example of highlight", description: "Imagine there is a picture here instead of a grey box and icon" },

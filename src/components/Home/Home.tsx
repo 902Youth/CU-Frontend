@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 
 import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
-import EndorsementFeed from "../Endorsement/EndorsementFeed";
 import SearchBar from "../Search/SearchBar";
 import User from "../ProfileQuickView/User";
 import { bgUri, pfpUri } from "./mockData";
-import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
-import Experience from "../Experience/Experience";
-import Projects from "../Projects/Projects";
-import Settings from "../Settings/Settings";
 
 import "./Home.css";
+import EndorsementFeed from "../Endorsement/EndorsementFeed";
 
 const Home: React.FC = () => {
-  const [currPage, setCurrPage] = useState<string>("endorsements");
   const [showMyProfile, setShowMyProfile] = useState<boolean>(true);
+  //In this component, I'll use a useSelect or useStoreSelect to get the user, as well as the selected user. If selected user isn't null, I'll set it as the diffUser. If selected user is null or handleMyProfile is clicked, I'll show the current user's profile quick view.
+
+  //Also, I am not passing a userId for this EndorsementFeed because this will get all endorsements that exist. I also need to make a toggle between home and following, so that we can see all endorsements that the user is following
   const [diffUser, setDiffUser] = useState<User>({
     name: "",
     userName: "",
@@ -46,15 +44,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <div className="profile-view-nav-tabs-wrapper">
+      <div className="endorsement-feed-wrapper">
         <span className="searchBar">
           <SearchBar />
         </span>
-        <ProfileViewNavTabs currPage={currPage} setCurrPage={setCurrPage} />
-        {currPage === "endorsements" && <EndorsementFeed />}
-        {currPage === "experience" && <Experience />}
-        {currPage === "projects" && <Projects />}
-        {currPage === "settings" && <Settings />}
+        <EndorsementFeed />
       </div>
 
       <div className="quick-view-wrapper">
@@ -70,7 +64,6 @@ const Home: React.FC = () => {
             badge="test"
             pfp={pfpUri}
             bgPic={bgUri}
-            edit={false}
             myProfile={showMyProfile}
           />
         ) : (
@@ -87,7 +80,6 @@ const Home: React.FC = () => {
               badge={diffUser.badge}
               pfp={diffUser.pfp}
               bgPic={diffUser.bgPic}
-              edit={false}
               myProfile={showMyProfile}
             />
           </>
