@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import { AppState } from "../../redux/Store";
-import SaveButton from "../Buttons/SaveButton/SaveButton";
 import TextField from "../Inputs/TextField/TextField";
-import DropDown from "../Inputs/DropDown/DropDown";
 import Email from "../Inputs/Email/Email";
 import SkillNotSelected from "./SkillNotSelected";
 import SkillSelected from "./SkillSelected";
@@ -10,22 +8,13 @@ import SkillSelected from "./SkillSelected";
 import "./ProfileSetupForm.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 
-// Array for all drop down options
-const jobTitleOptions = ["programmer", "manager"];
-
-const ProfileSetupForm: React.FC = () => {
+const ProfileSetupForm: React.FC = ({ initialSetup }) => {
   const selectedSkill: string | null = useSelector(
     (state: AppState) => state.skills.selectedSkill
   );
 
   return (
     <form className="container-profile-setup-form">
-      <section className="container-profile-setup-header">
-        <div className="profile-setup-title">Let's set up your profile!</div>
-        <SaveButton />
-      </section>
-      <hr className="line-divider-header" />
-
       <section className="profile-setup-form-container-info">
         <TextField
           id="profile-setup-first-name"
@@ -43,11 +32,12 @@ const ProfileSetupForm: React.FC = () => {
           label="Username"
         />
         <PrimaryButton text="Reset Password" />
-        <div className="title-more-about-you">More about you</div>
-        <DropDown
+        {initialSetup && (
+          <div className="title-more-about-you">More about you</div>
+        )}
+        <TextField
           id="profile-setup-job-title"
-          placeholder="Select..."
-          options={jobTitleOptions}
+          placeholder="Job Title"
           label="Job Title"
         />
         <TextField
@@ -61,13 +51,19 @@ const ProfileSetupForm: React.FC = () => {
 
       <section className="profile-setup-form-container-skills">
         <div className="title-expand-on-your-skills">Expand on your skills</div>
-        {selectedSkill ? <SkillSelected skill={selectedSkill} /> : <SkillNotSelected/>}
+        {selectedSkill ? (
+          <SkillSelected skill={selectedSkill} />
+        ) : (
+          <SkillNotSelected />
+        )}
       </section>
 
-      <section className="profile-setup-form-container-portfolio-website">
-        <div className="title-portfolio-website">Portfolio/Website</div>
-        <div className="profile-setup-portofolio-website"></div>
-      </section>
+      {initialSetup && (
+        <section className="profile-setup-form-container-portfolio-website">
+          <div className="title-portfolio-website">Portfolio/Website</div>
+          <div className="profile-setup-portofolio-website"></div>
+        </section>
+      )}
 
       <section className="profile-setup-form-container-delete-account">
         <div className="title-delete-account">Danger Zone</div>

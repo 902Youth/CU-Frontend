@@ -8,17 +8,16 @@
 }
 
 .input-wrapper {
-  background-color: white;
+  background-color: var(--primary-gray);
   max-width: 400px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px;
   height: 2.5rem;
   padding: 0 15px;
-  box-shadow: 0px 0px 8px #ddd;
   display: flex;
   align-items: center;
 }
 
-input {
+.search-container input {
   background-color: transparent;
   border: none;
   height: 100%;

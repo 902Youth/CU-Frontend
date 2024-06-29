@@ -3,6 +3,7 @@ import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import ProfileSetupForm from "../ProfileSetupForm/ProfileSetupForm";
 import User from "../ProfileQuickView/User";
 import { bgUri, pfpUri } from "../Home/mockData";
+import SaveButton from "../Buttons/SaveButton/SaveButton";
 
 import "./ProfileSetup.css";
 
@@ -41,7 +42,12 @@ const ProfileSetup: React.FC = () => {
   return (
     <div className="profile-setup-container">
       <div className="profile-setup-wrapper">
-        <ProfileSetupForm />
+        <section className="container-profile-setup-header">
+          <div className="profile-setup-title">Let's set up your profile!</div>
+          <SaveButton />
+        </section>
+        <hr className="line-divider-header" />
+        <ProfileSetupForm initialSetup={true} />
       </div>
 
       <div className="quick-view-wrapper">
@@ -57,6 +63,7 @@ const ProfileSetup: React.FC = () => {
             badge="test"
             pfp={pfpUri}
             bgPic={bgUri}
+            myProfile={showMyProfile}
           />
         ) : (
           <>

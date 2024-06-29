@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { DotsThree, HeartStraight, Chat } from "@phosphor-icons/react";
 import { useDispatch, useSelector } from "react-redux";
