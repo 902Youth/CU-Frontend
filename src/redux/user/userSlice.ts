@@ -105,6 +105,20 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
+// Delete user
+export const deleteUser = createAsyncThunk<any, { id: number }>(
+  "user/deleteUser",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:3000/users/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error || "Delete failed");
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "user",

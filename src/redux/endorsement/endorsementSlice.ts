@@ -280,15 +280,50 @@ export const fetchEndorsements = createAsyncThunk(
 
 export const addEndorsement = createAsyncThunk(
   "endorsements/addEndorsement",
-  async (endorsementData: Endorsement, { rejectWithValue }) => {
+  async (
+    { endorsementData, userId }: { endorsementData: Endorsement; userId: number },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await axios.post(
-        "----------i dont have the endpoint---------",
+        `http://127.0.0.1:3000/endorsements/${userId}`,
         endorsementData
       );
       return response.data;
     } catch (error) {
       return rejectWithValue("Failed to add endorsement");
+    }
+  }
+);
+
+export const updateEndorsement = createAsyncThunk(
+  "endorsements/updateEndorsement",
+  async (
+    { endorsementId, updatedData }: { endorsementId: string; updatedData: Partial<Endorsement> },
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await axios.put(
+        `http://127.0.0.1:3000/endorsements/${endorsementId}`,
+        updatedData
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue("Failed to update endorsement");
+    }
+  }
+);
+
+export const deleteEndorsement = createAsyncThunk(
+  "endorsements/deleteEndorsement",
+  async (endorsementId: string, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:3000/endorsements/${endorsementId}`
+      );
+      return endorsementId;
+    } catch (error) {
+      return rejectWithValue("Failed to delete endorsement");
     }
   }
 );
