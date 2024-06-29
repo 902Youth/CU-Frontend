@@ -177,3 +177,5 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
     </div>
   );
 };
+
+export default ProfileQuickView;

@@ -1,10 +1,15 @@
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { DotsThree, HeartStraight, Chat } from "@phosphor-icons/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/Store";
 import "./EndorsementFeed.css";
+import { fetchEndorsements } from "../../redux/endorsement/endorsementSlice";
+import { fetchUsers } from "../../redux/user/userSlice";
+import { useEffect } from "react";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const EndorsementFeed = () => {
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const endorsements = useSelector(
     (state: AppState) => state.endorsements.endorsements
   );
@@ -12,22 +17,31 @@ const EndorsementFeed = () => {
     (state: AppState) => state.skills.selectedSkill
   );
 
+  useEffect(() => {
+    dispatch(fetchEndorsements(0));
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   const filteredEndorsements = selectedSkill
     ? endorsements.filter((endorsement) =>
         endorsement.skill?.includes(selectedSkill)
       )
     : endorsements;
 
+  const user = useSelector(
+    (state: AppState) => state.user.userAccountDetails
+  );
+
   return (
     <div className="endorsement-feed">
-      {filteredEndorsements.map((endorsement) => (
-        <div className="endorsement">
+      {filteredEndorsements.map((endorsement, key) => (
+        <div className="endorsement" key={key} >
           <div className="endorser">
-            <ProfilePicture name={endorsement.endorser.name} />
+            <ProfilePicture name={endorsement.endorser_name} />
             <div className="endorser-info">
               <div className="endorser-details">
                 <p className="endorser-name clickable">
-                  {endorsement.recipient.name} received an endorsement
+                  {user.fullName} received an endorsement
                 </p>
                 <p className="posted-date">2 hrs ago</p>
               </div>
@@ -41,12 +55,12 @@ const EndorsementFeed = () => {
               <p>
                 Endorsement by{" "}
                 <span className="endorser-username">
-                  @{endorsement.endorser.name}
+                  @{endorsement.endorser_name}
                 </span>
               </p>
             </div>
             <div className="message-content">
-              <p>{endorsement.message}</p>
+              <p>{endorsement.message ?? "Message not found"}</p>
             </div>
           </div>
           <div className="stats">

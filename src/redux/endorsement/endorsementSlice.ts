@@ -261,7 +261,7 @@ export const fetchEndorsements = createAsyncThunk(
   async (userId: number, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `----------i dont have the endpoint---------'${userId}`
+        `http://127.0.0.1:3000/endorsements/${userId}`
       );
       return response.data;
     } catch (error) {

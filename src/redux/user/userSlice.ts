@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, AsyncThunk, AsyncThunkAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { bgUri, pfpUri } from "../../components/Home/mockData";
 
 interface UserState {
   isLoggedIn: boolean;
@@ -9,7 +10,7 @@ interface UserState {
   error?: string;
   registrationError?: string;
   userAccountDetails: {
-    name: string | undefined;
+    fullName: string | undefined;
     userName: string | undefined;
     position: string | undefined;
     department: string | undefined;
@@ -19,6 +20,11 @@ interface UserState {
     bio: string | undefined;
     pfp: string | undefined;
     bgPic: string | undefined;
+    id: number | undefined;
+    mobile: number | undefined;
+    email: string | undefined;
+    registeredAt: string | undefined;
+    lastLogin: string | undefined;
   }
 }
 
@@ -30,16 +36,21 @@ const initialState: UserState = {
   error: undefined,
   registrationError: undefined,
   userAccountDetails: {
-    name: undefined,
-    userName: undefined,
-    position: undefined,
-    department: undefined,
-    badge: undefined,
+    fullName: "Christ Hemsworth",
+    userName: "ChrisH_72",
+    position: "HR specialist",
+    department: "HR",
+    badge: "test",
     endorsements: null,
-    skills: undefined,
-    bio: undefined,
-    pfp: undefined,
-    bgPic: undefined,
+    skills: ["test"],
+    bio: "A budding HR specialist looking for a small to medium sized company!",
+    pfp: pfpUri,
+    bgPic: bgUri,
+    id: 200,
+    mobile: 5555555555,
+    email: "chrishemsworth@gmail.com",
+    registeredAt: new Date().toISOString(),
+    lastLogin: new Date().toISOString()
   }
 };
 
@@ -75,6 +86,21 @@ const loginUser = createAsyncThunk<any, { email: string; password: string }>(
       return response.data;
     } catch (error) {
       return rejectWithValue(error || "Login failed");
+    }
+  }
+);
+
+// Get users
+export const fetchUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async ({ rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:3000/users`
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue("Failed to fetch users");
     }
   }
 );

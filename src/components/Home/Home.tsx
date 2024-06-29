@@ -4,13 +4,13 @@ import { ProfileQuickView } from "../ProfileQuickView/ProfileQuickView";
 import EndorsementFeed from "../Endorsement/EndorsementFeed";
 import SearchBar from "../Search/SearchBar";
 import User from "../ProfileQuickView/User";
-import { bgUri, pfpUri } from "./mockData";
 import ProfileViewNavTabs from "../ProfileViewNavTabs/ProfileViewNavTabs";
 import Icons from "../../Icons/icons";
 import Experience from "../Experience/Experience";
 import Projects from "../Projects/Projects";
 import Settings from "../Settings/Settings";
-
+import { AppState } from "../../redux/Store";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Home.css";
 
@@ -45,7 +45,12 @@ const Home: React.FC = () => {
     });
     setShowMyProfile(true);
   };
-  
+
+  const user = useSelector(
+    (state: AppState) => state.user.userAccountDetails
+  );
+
+
   return (
 
     <div className="home-container">
@@ -66,16 +71,16 @@ const Home: React.FC = () => {
       <div className="quick-view-wrapper">
         {showMyProfile ? (
           <ProfileQuickView
-            name="Chris Hemsworth"
-            position="HR Specialist"
-            department={"hr"}
-            userName="@ChrisH_72"
+            name={user.fullName}
+            position={user.position}
+            department={user.department}
+            userName={user.userName}
             endorsements={15}
-            bio="A budding HR specialist looking for a small to medium sized company!"
-            skills={["test"]}
-            badge="test"
-            pfp={pfpUri}
-            bgPic={bgUri}
+            bio={user.bio}
+            skills={user.skills}
+            badge={user.badge}
+            pfp={user.pfp}
+            bgPic={user.bgPic}
             edit={false}
             myProfile={showMyProfile}
           />

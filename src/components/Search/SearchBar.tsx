@@ -40,7 +40,7 @@ const SearchBar = () => {
     fetchData(value);
   };
 
-  console.log(results);
+  // console.log(results);
 
   return (
     <>

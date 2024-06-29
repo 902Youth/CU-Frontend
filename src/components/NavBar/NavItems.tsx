@@ -36,10 +36,10 @@ export default function NavItems(): JSX.Element {
     },
   ];
 
-  const navItemsArray = navItems.map((navItem: NavItem) => {
+  const navItemsArray = navItems.map((navItem: NavItem, key) => {
     const { path, icon } = navItem;
     const isCurrentLocation = currentLocation.pathname === path;
-    return <NavItem path={path} icon={icon} active={isCurrentLocation} />;
+    return <NavItem key={key} path={path} icon={icon} active={isCurrentLocation} />;
   });
 
   return <ul className="container-nav-items">{navItemsArray}</ul>;
