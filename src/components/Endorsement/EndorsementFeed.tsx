@@ -1,22 +1,16 @@
 import React, {useEffect} from "react";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { DotsThree, HeartStraight, Chat } from "@phosphor-icons/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/Store";
 import "./EndorsementFeed.css";
+import { fetchEndorsements } from "../../redux/endorsement/endorsementSlice";
+import { fetchUsers } from "../../redux/user/userSlice";
+import { useEffect } from "react";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
-interface EndorsementFeedProps {
-  userId?: string;
-  following?: boolean;
-}
-
-const EndorsementFeed: React.FC<EndorsementFeedProps> = ({userId}) => {
-  //I will use the userId to select the correct endorsements for that user when the EndorsementFeed is being rendered on the /account or the /user/${userId} page
-
-  //I also need to add an onClick for the userPfp inside of the endorsement, and somehow send that specific data to the ProfileQuickView. This ONLY happens at /home. This ability will be disabled for any other route, because from /account, the user can click on the @user_name inside of the endorsement in order to view their profile. Important note: if a user at /account or /user/:userId clicks on an @user_name, it will navigate to that @user_name's full profile view and does not show a quick view of their profile
-
-  //If at /user/:userId the user doesn't have any endorsements, I need default text that says they don't have any but you can write them one and a link to the endorsements page. Maybe we auto-populate the user's username since they navigated from that text to endorsements.
-   
+const EndorsementFeed = () => {
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const endorsements = useSelector(
     (state: AppState) => state.endorsements.endorsements
   );
@@ -24,22 +18,31 @@ const EndorsementFeed: React.FC<EndorsementFeedProps> = ({userId}) => {
     (state: AppState) => state.skills.selectedSkill
   );
 
+  useEffect(() => {
+    dispatch(fetchEndorsements(0));
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   const filteredEndorsements = selectedSkill
     ? endorsements.filter((endorsement) =>
         endorsement.skill?.includes(selectedSkill)
       )
     : endorsements;
 
+  const user = useSelector(
+    (state: AppState) => state.user.userAccountDetails
+  );
+
   return (
     <div className="endorsement-feed">
-      {filteredEndorsements.map((endorsement) => (
-        <div className="endorsement">
+      {filteredEndorsements.map((endorsement, key) => (
+        <div className="endorsement" key={key} >
           <div className="endorser">
-            <ProfilePicture name={endorsement.endorser.name} />
+            <ProfilePicture name={endorsement.endorser_name} />
             <div className="endorser-info">
               <div className="endorser-details">
                 <p className="endorser-name clickable">
-                  {endorsement.recipient.name} received an endorsement
+                  {user.fullName} received an endorsement
                 </p>
                 <p className="posted-date">2 hrs ago</p>
               </div>
@@ -53,12 +56,12 @@ const EndorsementFeed: React.FC<EndorsementFeedProps> = ({userId}) => {
               <p>
                 Endorsement by{" "}
                 <span className="endorser-username">
-                  @{endorsement.endorser.name}
+                  @{endorsement.endorser_name}
                 </span>
               </p>
             </div>
             <div className="message-content">
-              <p>{endorsement.message}</p>
+              <p>{endorsement.message ?? "Message not found"}</p>
             </div>
           </div>
           <div className="stats">

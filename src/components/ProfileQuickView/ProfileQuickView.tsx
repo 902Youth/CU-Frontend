@@ -276,3 +276,5 @@ function setPhoto(imageObject: {
 }) {
   throw new Error("Function not implemented.");
 }
+
+export default ProfileQuickView;
