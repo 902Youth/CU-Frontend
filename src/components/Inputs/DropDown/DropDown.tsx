@@ -1,10 +1,16 @@
 import "./DropDown.css";
 
-const DropDown: React.FC = ({ options = [], placeholder, id, label }) => {
+const DropDown: React.FC = ({
+  options = [],
+  placeholder,
+  id,
+  label,
+  onChange,
+}) => {
   return (
     <div className="container-input-drop-down">
       {label && <label htmlFor={id}>{label}</label>}
-      <select id={id}>
+      <select id={id} onChange={onChange}>
         {/* This is a disabled option for the placeholder  */}
         {placeholder && (
           <option value="" disabled selected>

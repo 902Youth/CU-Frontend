@@ -6,7 +6,6 @@ import { AppState } from "../../redux/Store";
 import "./EndorsementFeed.css";
 import { fetchEndorsements } from "../../redux/endorsement/endorsementSlice";
 import { fetchUsers } from "../../redux/user/userSlice";
-import { useEffect } from "react";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const EndorsementFeed = () => {

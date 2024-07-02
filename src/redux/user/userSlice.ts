@@ -1,4 +1,10 @@
-import { createSlice, createAsyncThunk, AsyncThunk, AsyncThunkAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  AsyncThunk,
+  AsyncThunkAction,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 import { bgUri, pfpUri } from "../../components/Home/mockData";
 
@@ -25,7 +31,8 @@ interface UserState {
     email: string | undefined;
     registeredAt: string | undefined;
     lastLogin: string | undefined;
-  }
+  };
+  accountChanged: boolean;
 }
 
 const initialState: UserState = {
@@ -50,8 +57,9 @@ const initialState: UserState = {
     mobile: 5555555555,
     email: "chrishemsworth@gmail.com",
     registeredAt: new Date().toISOString(),
-    lastLogin: new Date().toISOString()
-  }
+    lastLogin: new Date().toISOString(),
+  },
+  accountChanged: false,
 };
 
 const registerUser = createAsyncThunk<any, { email: string; password: string }>(
@@ -95,9 +103,7 @@ export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
   async ({ rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:3000/users`
-      );
+      const response = await axios.get(`http://127.0.0.1:3000/users`);
       return response.data;
     } catch (error) {
       return rejectWithValue("Failed to fetch users");
@@ -110,9 +116,7 @@ export const deleteUser = createAsyncThunk<any, { id: number }>(
   "user/deleteUser",
   async ({ id }, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(
-        `http://127.0.0.1:3000/users/${id}`
-      );
+      const response = await axios.delete(`http://127.0.0.1:3000/users/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error || "Delete failed");
@@ -131,6 +135,9 @@ const userSlice = createSlice({
       state.error = undefined;
       state.registrationError = undefined;
       state.isRegistering = false;
+    },
+    stageAccountChange(state, action: PayloadAction<boolean>) {
+      state.accountChanged = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -165,5 +172,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, stageAccountChange } = userSlice.actions;
 export default userSlice.reducer;

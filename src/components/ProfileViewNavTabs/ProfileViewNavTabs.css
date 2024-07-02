@@ -15,3 +15,9 @@
   color: gray;
   cursor: pointer;
 }
+
+.profile-view-nav-tabs-save-button-wrapper {
+  display: flex;
+  justify-content: end;
+  flex-grow: 1;
+}

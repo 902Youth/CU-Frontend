@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../redux/Store";
 import TextField from "../Inputs/TextField/TextField";
 import Email from "../Inputs/Email/Email";
 import SkillNotSelected from "./SkillNotSelected";
 import SkillSelected from "./SkillSelected";
+import { stageAccountChange } from "../../redux/user/userSlice";
 
 import "./ProfileSetupForm.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
@@ -13,6 +14,12 @@ const ProfileSetupForm: React.FC = ({ initialSetup }) => {
     (state: AppState) => state.skills.selectedSkill
   );
 
+  const dispatch = useDispatch();
+
+  const handleChange = () => {
+    dispatch(stageAccountChange(true));
+  };
+
   return (
     <form className="container-profile-setup-form">
       <section className="profile-setup-form-container-info">
@@ -20,16 +27,19 @@ const ProfileSetupForm: React.FC = ({ initialSetup }) => {
           id="profile-setup-first-name"
           placeholder="First name"
           label="First name"
+          onChange={handleChange}
         />
         <TextField
           id="profile-setup-last-name"
           placeholder="Last name"
           label="Last name"
+          onChange={handleChange}
         />
         <TextField
           id="profile-setup-username"
           placeholder="Username"
           label="Username"
+          onChange={handleChange}
         />
         <PrimaryButton text="Reset Password" />
         {initialSetup && (
@@ -39,20 +49,27 @@ const ProfileSetupForm: React.FC = ({ initialSetup }) => {
           id="profile-setup-job-title"
           placeholder="Job Title"
           label="Job Title"
+          onChange={handleChange}
         />
         <TextField
           id="profile-setup-location"
           placeholder="Location"
           label="Location"
+          onChange={handleChange}
         />
-        <Email id="profile-setup-email" placeholder="Email" label="Email" />
+        <Email
+          id="profile-setup-email"
+          placeholder="Email"
+          label="Email"
+          onChange={handleChange}
+        />
         <PrimaryButton text="Change Email" />
       </section>
 
       <section className="profile-setup-form-container-skills">
         <div className="title-expand-on-your-skills">Expand on your skills</div>
         {selectedSkill ? (
-          <SkillSelected skill={selectedSkill} />
+          <SkillSelected skill={selectedSkill} handleChange={handleChange} />
         ) : (
           <SkillNotSelected />
         )}
