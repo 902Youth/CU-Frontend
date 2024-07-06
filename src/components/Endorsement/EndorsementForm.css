@@ -1,0 +1,61 @@
+@import "../../styles/variables.css";
+
+.container-endorsement-form {
+  background-color: var(--primary-gray);
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.container-endorsement-form .la {
+  justify-content: end;
+}
+
+.container-endorsement-form input {
+  border: none;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.container-endorsement-form select {
+  border: none;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.container-endorsement-form .text-field-label,
+.container-endorsement-form .drop-down-label {
+  min-width: 150px;
+  display: flex;
+  justify-content: end;
+}
+
+.container-endorsement-form input,
+.container-endorsement-form select {
+  width: 40%;
+}
+
+.container-endorsement-form textarea {
+  border-radius: 5px;
+}
+
+.endorsement-form-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.endorsement-form-controls button {
+  width: 180px;
+  height: 30px;
+  margin-bottom: 10px;
+  box-shadow: 4px 2px 3px #c0c0c0;
+  font-size: medium;
+  line-height: 50%;
+}
+
+#endorsement-form-button-send {
+  margin-bottom: 10px;
+}

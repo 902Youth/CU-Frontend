@@ -1,9 +1,23 @@
-.container-input-drop-down {
+.container-drop-down {
   display: flex;
-  flex-direction: column;
 }
 
-.container-input-drop-down > label {
-  font-size: 12px;
+.container-drop-down.label-top {
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.container-drop-down.label-left {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.drop-down-label {
+  font-size: 0.8em;
   font-weight: bold;
+  min-width: fit-content;
+}
+
+.container-drop-down select {
+  padding-left: 10px;
 }

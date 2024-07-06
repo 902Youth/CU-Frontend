@@ -1,13 +1,15 @@
-.container-input-email {
+.container-email-field {
   display: flex;
   flex-direction: column;
 }
 
-.container-input-email > label {
-    font-size: 12px;
-    font-weight: bold;
-  }
- 
-.container-input-email > input::placeholder {
-    color: #c0c0c0;
+.email-field-label {
+  font-size: 0.8em;
+  font-weight: bold;
+  min-width: fit-content;
+}
+
+.container-email-field > input::placeholder {
+  color: #c0c0c0;
+  padding-left: 10px;
 }

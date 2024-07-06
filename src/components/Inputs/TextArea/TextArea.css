@@ -1,13 +1,21 @@
-.container-input-text-area {
-    display: flex;
-    flex-direction: column;
+.container-text-area {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
 }
 
-.container-input-text-area > label {
-    font-size: 12px;
-    font-weight: bold;
+.text-area-label {
+  font-size: 0.8em;
+  font-weight: bold;
+  min-width: fit-content;
 }
- 
-.container-input-text-area > input::placeholder {
-    color: #c0c0c0;
+
+.container-text-area > input::placeholder {
+  color: #c0c0c0;
+}
+
+.text-area {
+  border: none;
+  height: 300px;
+  margin-top: 5px;
 }

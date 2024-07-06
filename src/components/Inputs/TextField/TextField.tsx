@@ -1,9 +1,19 @@
 import "./TextField.css";
 
-const TextField: React.FC = ({ id, placeholder, label, onChange }) => {
+const TextField: React.FC = ({
+  id,
+  placeholder,
+  label,
+  labelPosition = "top",
+  onChange,
+}) => {
+  const labelPositionClass = `label-${labelPosition}`;
+
   return (
-    <div className="container-input-text-field">
-      <label htmlFor={id}>{label}</label>
+    <div className={`container-text-field ${labelPositionClass}`}>
+      <div className="text-field-label">
+        <label htmlFor={id}>{label}</label>
+      </div>
       <input
         id={id}
         type="text"

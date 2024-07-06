@@ -5,11 +5,18 @@ const DropDown: React.FC = ({
   placeholder,
   id,
   label,
+  labelPosition = "top",
   onChange,
 }) => {
+  const labelPositionClass = `label-${labelPosition}`;
+
   return (
-    <div className="container-input-drop-down">
-      {label && <label htmlFor={id}>{label}</label>}
+    <div className={`container-drop-down ${labelPositionClass}`}>
+      {label && (
+        <div className="drop-down-label">
+          <label htmlFor={id}>{label}</label>
+        </div>
+      )}
       <select id={id} onChange={onChange}>
         {/* This is a disabled option for the placeholder  */}
         {placeholder && (
