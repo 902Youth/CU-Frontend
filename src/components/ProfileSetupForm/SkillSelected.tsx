@@ -15,10 +15,14 @@ const makeYearsOptions = (num: number) => {
 };
 
 const levelOptions = ["Beginner", "Intermediate", "Advanced", "Master"];
-const howDidYouLearnOptions = ["Self-taught", "On the job", "University", "Technical school"];
+const howDidYouLearnOptions = [
+  "Self-taught",
+  "On the job",
+  "University",
+  "Technical school",
+];
 
-export default function SkillSelected({ skill }) {
-
+export default function SkillSelected({ skill, handleChange }) {
   const yearsOptions: number[] = makeYearsOptions(50);
 
   return (
@@ -29,14 +33,24 @@ export default function SkillSelected({ skill }) {
           id="profile-setup-skill-years"
           placeholder="Years"
           options={yearsOptions}
+          onChange={handleChange}
         />
         <DropDown
           id="profile-setup-skill-learn"
           placeholder="How did you learn?"
           options={howDidYouLearnOptions}
+          onChange={handleChange}
         />
-        <DropDown id="profile-setup-skill-level" options={levelOptions}/>
-        <TextArea id="profile-setup-skill-description" label="Description" />
+        <DropDown
+          id="profile-setup-skill-level"
+          options={levelOptions}
+          onChange={handleChange}
+        />
+        <TextArea
+          id="profile-setup-skill-description"
+          label="Description"
+          onChange={handleChange}
+        />
       </div>
     </>
   );

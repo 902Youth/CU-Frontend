@@ -10,7 +10,7 @@
   height: 85vh;
   overflow-y: scroll;
   min-width: min-content;
-  padding: 0px 15px 0px 60px;
+  padding: 0 4% 0 8%;
 }
 
 .quick-view-wrapper {
