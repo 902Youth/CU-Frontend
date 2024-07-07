@@ -1,13 +1,24 @@
-.container-input-text-field {
-    display: flex;
-    flex-direction: column;
+.container-text-field {
+  display: flex;
 }
 
-.container-input-text-field > label {
-    font-size: 12px;
-    font-weight: bold;
+.container-text-field.label-top {
+  flex-direction: column;
+  row-gap: 2px;
 }
- 
-.container-input-text-field > input::placeholder {
-    color: #c0c0c0;
+
+.container-text-field.label-left {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.text-field-label {
+  font-size: 0.8em;
+  font-weight: bold;
+  min-width: fit-content;
+}
+
+.container-text-field > input::placeholder {
+  color: #c0c0c0;
+  padding-left: 10px;
 }

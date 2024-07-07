@@ -7,7 +7,7 @@ import ProfileSetup from "./components/ProfileSetup/ProfileSetup";
 // import Footer from "./components/Footer/Footer";
 
 import "./styles/App.css";
-
+import EndorsementPage from "./components/Endorsement/Endorsement";
 
 const App: React.FC = () => {
   return (
@@ -23,20 +23,17 @@ const App: React.FC = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/user/:userId" element={<Account />} />
             <Route path="/profile" element={<h1>Profile</h1>}></Route>
-            <Route path="/endorsements" element={<h1>Endorsements</h1>}></Route>
+            <Route path="/endorsements" element={<EndorsementPage />}></Route>
             <Route
               path="/notifications"
               element={<h1>Notifications</h1>}
             ></Route>
             <Route path="/jobs" element={<h1>Jobs</h1>}></Route>
-            <Route
-              path="/profile-setup"
-              element={<ProfileSetup/>}
-            ></Route>
+            <Route path="/profile-setup" element={<ProfileSetup />}></Route>
             <Route path="/sign-in" element={<h1>Sign In</h1>}></Route>
             <Route path="/sign-up" element={<h1>Sign Up</h1>}></Route>
 
-            <Route path="/account" element={<Account />}/>
+            <Route path="/account" element={<Account />} />
           </Routes>
         </div>
       </div>
