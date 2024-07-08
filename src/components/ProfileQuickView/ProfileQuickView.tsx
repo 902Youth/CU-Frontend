@@ -62,6 +62,7 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
     navigate(`/${whereTo}`);
   };
 
+
   const handleAddSkill = (addSkill: string) => {
     if (addSkill.trim() !== "") {
       setTempSkills([...tempSkills, addSkill]);
@@ -245,7 +246,7 @@ export const ProfileQuickView: React.FC<ProfileProps> = ({
             />
           </div>
         )}
-        <Skills skills={tempSkills} />
+        <Skills skills={tempSkills} route={currRoute} />
       </div>
 
       <div className="divider"></div>
